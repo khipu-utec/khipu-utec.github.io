@@ -1,0 +1,25 @@
+---
+main:
+  - name: Política
+    ref: 
+    sub:
+      - name: Información general
+        ref: "/politica/informacion-general"
+      - name: Solicitud de acceso
+        ref: "/politica/solicitud-de-acceso"
+      - name: Reglas de uso 
+        ref: "/politica/reglas-de-uso"
+  - name: Guías de uso
+    ref:
+    sub:
+      - name: Acceso e inicio de sesión
+        ref: "/uso/acceso"
+      - name: Slurm
+        ref: "/uso/slurm"
+  - name: Software
+    ref:
+    sub:
+      - name: Instalación de software
+        ref: "/software/instalacion"
+      - name: Software disponible
+        ref: "/software/disponible"

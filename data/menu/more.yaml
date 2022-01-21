@@ -1,0 +1,5 @@
+---
+more:
+  - name: Anuncios
+    ref: "/anuncios"
+    icon: "gdoc_notification"
