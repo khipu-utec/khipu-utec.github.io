@@ -15,7 +15,7 @@ El pedido de creación de cuentas para acceso lo realizará: \
 **b)** el profesor responsable del curso.
 
 <div style="text-align: center;">
-{{< button href="/registro" size="large">}}Abrir solicitud de acceso{{< /button >}}
+{{< button href="http://127.0.0.1:8000/cluster/register/" size="large">}}Abrir solicitud de acceso{{< /button >}}
 </div>
 
 
