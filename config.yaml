@@ -1,5 +1,5 @@
 ---
-baseURL: "http://localhost"
+baseURL: "https://khipu-utec.github.io/docs/"
 title: "Khipu"
 theme: "hugo-geekdoc"
 
