@@ -13,7 +13,7 @@ weight: -20
 
 Khipu es un [cluster](https://en.wikipedia.org/wiki/Cluster) dedicado a la computación de alto desempeño, en inglés [High performance Computing (HPC)](https://en.wikipedia.org/wiki/Supercomputer). Está formado por una colección de servidores distribuídos, llamados nodos. Cada nodo está conectados a través de una interconexión de alta velocidad (Infiniband), y tiene CPUs y/o GPUs, memoria y almacenamiento.
 
-Khipu es parte del [Centro de Investigación para la Computación Sostenible (CICS)](https://compsust.utec.edu.pe/) de la [Universidad de Ingeniería y Tecnología (UTEC)](https://utec.edu.pe/).
+Khipu es parte del [Centro de Investigación en Computación Sostenible (COMPSUST)](https://compsust.utec.edu.pe/) de la [Universidad de Ingeniería y Tecnología (UTEC)](https://utec.edu.pe/).
 
 > **Contacto:** khipu@utec.edu.pe. \
 > Para información de acceso ver Política de uso. 
