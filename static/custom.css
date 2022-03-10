@@ -1,3 +1,4 @@
+/* You can add custom styles here. */
 /* Global customization */
 
 :root {
@@ -7,7 +8,7 @@
 /* Light mode theming */
 :root,
 :root[color-mode="light"] {
-  --header-background: #4ec58a;
+  --header-background: #5ba4d5;
   --header-font-color: #ffffff;
 
   --body-background: #ffffff;
@@ -15,11 +16,11 @@
 
   --mark-color: #ffab00;
 
-  --button-background: #62cb97;
-  --button-border-color: #4ec58a;
+  --button-background: #37698a;
+  --button-border-color: #5ba4d5;
 
-  --link-color: #518169;
-  --link-color-visited: #c54e8a;
+  --link-color: #37698a;
+  --link-color-visited: #5ba4d5;
 
   --code-background: #f5f6f8;
   --code-accent-color: #e3e7eb;
@@ -34,14 +35,14 @@
 
   --control-icons: #b2bac1;
 
-  --footer-background: #2f333e;
-  --footer-font-color: #ffffff;
-  --footer-link-color: #ffcc5c;
-  --footer-link-color-visited: #ffcc5c;
+  --footer-background: #ffffff00;
+  --footer-font-color: #4c5f71;
+  --footer-link-color: #5ba4d5;
+  --footer-link-color-visited: #4c5f71;
 }
 @media (prefers-color-scheme: light) {
   :root {
-    --header-background: #4ec58a;
+    --header-background: #5ba4d5;
     --header-font-color: #ffffff;
 
     --body-background: #ffffff;
@@ -49,11 +50,11 @@
 
     --mark-color: #ffab00;
 
-    --button-background: #62cb97;
-    --button-border-color: #4ec58a;
+    --button-background: #37698a;
+    --button-border-color: #5ba4d5;
 
-    --link-color: #518169;
-    --link-color-visited: #c54e8a;
+    --link-color: #37698a;
+    --link-color-visited: #5ba4d5;
 
     --code-background: #f5f6f8;
     --code-accent-color: #e3e7eb;
@@ -68,16 +69,16 @@
 
     --control-icons: #b2bac1;
 
-    --footer-background: #2f333e;
-    --footer-font-color: #ffffff;
-    --footer-link-color: #ffcc5c;
-    --footer-link-color-visited: #ffcc5c;
+    --footer-background: #ffffff00;
+    --footer-font-color: #4c5f71;
+    --footer-link-color: #5ba4d5;
+    --footer-link-color-visited: #4c5f71;
   }
 }
 
 /* Dark mode theming */
 :root[color-mode="dark"] {
-  --header-background: #4ec58a;
+  --header-background: #5ba4d5;
   --header-font-color: #ffffff;
 
   --body-background: #343a40;
@@ -85,8 +86,8 @@
 
   --mark-color: #ffab00;
 
-  --button-background: #62cb97;
-  --button-border-color: #4ec58a;
+  --button-background: #37698a;
+  --button-border-color: #5ba4d5;
 
   --link-color: #7ac29e;
   --link-color-visited: #c27a9e;
@@ -106,12 +107,12 @@
 
   --footer-background: #2f333e;
   --footer-font-color: #ffffff;
-  --footer-link-color: #ffcc5c;
-  --footer-link-color-visited: #ffcc5c;
+  --footer-link-color: #b3cde0;
+  --footer-link-color-visited: #b3cde0;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --header-background: #4ec58a;
+    --header-background: #5ba4d5;
     --header-font-color: #ffffff;
 
     --body-background: #343a40;
@@ -119,8 +120,8 @@
 
     --mark-color: #ffab00;
 
-    --button-background: #62cb97;
-    --button-border-color: #4ec58a;
+    --button-background: #37698a;
+    --button-border-color: #5ba4d5;
 
     --link-color: #7ac29e;
     --link-color-visited: #c27a9e;
@@ -140,7 +141,7 @@
 
     --footer-background: #2f333e;
     --footer-font-color: #ffffff;
-    --footer-link-color: #ffcc5c;
-    --footer-link-color-visited: #ffcc5c;
+    --footer-link-color: #b3cde0;
+    --footer-link-color-visited: #b3cde0;
   }
 }
