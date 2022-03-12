@@ -1,4 +1,5 @@
 ---
 title: Política
-weight: -20
+weight: 10
+geekdocCollapseSection: true
 ---

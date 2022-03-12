@@ -4,10 +4,6 @@ date: 2022-01-19T13:24:49-05:00
 
 ---
 
-{{< hint info >}}
-**Última actualización:** 23 Agosto 2020.
-{{< /hint >}}
-
 1. Abrir un terminal y escribir el siguiente comando reemplazando su nombre de usuario en el campo <username>. 
 
 ```shell

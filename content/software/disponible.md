@@ -4,10 +4,6 @@ date: 2022-01-19T13:24:03-05:00
 
 ---
 
-{{< hint info >}}
-**Última actualización:** 23 Agosto 2020.
-{{< /hint >}}
-
 El cluster Khipu usa [CentOS 7 (Linux/GNU)](https://www.centos.org/) como sistema operativo principal y [Slurm](https://slurm.schedmd.com/overview.html) como manager de filas.
 Para listar desde su terminal el software disponible para el usuario.
 

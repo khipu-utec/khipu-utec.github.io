@@ -1,10 +1,7 @@
 ---
 main:
   - name: Política
-    ref: 
     sub:
-      - name: Información general
-        ref: "/politica/informacion-general"
       - name: Solicitud de acceso
         ref: "/politica/solicitud-de-acceso"
       - name: Reglas de uso 
@@ -23,3 +20,5 @@ main:
         ref: "/software/instalacion"
       - name: Software disponible
         ref: "/software/disponible"
+  - name: Reportes
+    ref: "/reportes"

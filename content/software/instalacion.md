@@ -1,14 +1,10 @@
 ---
-title: "Instalacion"
+title: "Instalación"
 date: 2022-01-19T13:23:43-05:00
 
 ---
 
-{{< hint info >}}
-**Última actualización:** 23 Agosto 2020.
-{{< /hint >}}
-
- Para entrar en contacto con el administrador, por favor enviar un mensaje a khipu@utec.edu.pe.
+Para entrar en contacto con el administrador, por favor enviar un mensaje a khipu@utec.edu.pe.
 
 - En caso de software licenciado, el usuario debe proveer la licencia y/o instalador del software al administrador para ser instalado. 
 - El usuario puede instalar el software y libraries necesarios en su /home, en caso de no requerir licencia o ser código abierto. 

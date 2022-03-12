@@ -1,5 +1,16 @@
 ---
 header:
+  - name: Home
+    ref: https://web.khipu.utec.edu.pe
+    icon: gdoc_arrow_back
+    external: true
+  # - name: Home
+  #   ref: https://web.khipu.utec.edu.pe
+  #   icon: gdoc_home
+  #   external: true
+  # - name: Anuncios
+  #   ref: "/anuncios"
+  #   icon: gdoc_notification
   - name: GitHub
     ref: https://github.com/khipu-utec
     icon: gdoc_github

@@ -3,9 +3,6 @@ title: "Slurm"
 date: 2022-01-19T13:24:58-05:00
 
 ---
-{{< hint info >}}
-**Última actualización:** 23 Agosto 2020.
-{{< /hint >}}
 
 {{< toc >}}
 

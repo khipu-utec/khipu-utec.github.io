@@ -4,11 +4,6 @@ date: 2022-01-19T13:22:58-05:00
 
 ---
 
-{{< hint danger >}}
-**Importante:** Por favor, leer con atención.\
-**Última actualización:** 23 Agosto 2020.
-{{< /hint >}}
-
 - Las cuentas son estrictamente personales.
 - El usuario no debe compartir su cuenta (password, ssh keys, acceso VPN).
 - El usuario no debe usar la cuenta de otra persona, con o sin consentimiento. 

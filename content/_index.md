@@ -4,7 +4,7 @@ description: KhipuDocs es la documentación oficial del cluster Khipu. En este s
 geekdocNav: true
 geekdocAlign: left
 geekdocAnchor: false
-weight: -20
+showLastmod: false
 ---
 
 {{< columns >}}
