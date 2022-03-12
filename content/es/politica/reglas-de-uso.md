@@ -1,7 +1,6 @@
 ---
 title: "Reglas De Uso"
 date: 2022-01-19T13:22:58-05:00
-
 ---
 
 - Las cuentas son estrictamente personales.
