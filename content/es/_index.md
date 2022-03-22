@@ -1,11 +1,63 @@
 ---
-title: Khipu
-description: KhipuDocs es la documentación oficial del cluster Khipu. En este sitio encontrarás todoa la información sobre el cluster, las políticas y guías de uso. Para empezar a usar Khipu, solo necesitas ser miembro de la comunidad UTEC y registrarte en el siguiente formulario.
+title: Inicio
 geekdocNav: true
-geekdocAlign: left
+geekdocAlign: center
 geekdocAnchor: false
 showLastmod: false
+showTitle: false
 ---
+# Bienvenido a la documentación de Khipu
+
+![](logo-tiny.png)
+
+Esta es la documentación oficial del cluster Khipu. En este sitio encontrarás toda la información sobre el cluster, las políticas y guías de uso. 
+
+{{< button size="large" relref="overview/khipu/" >}}Iniciar{{< /button >}}
+
+## Enlaces Rápidos
+
+{{< columns >}}
+
+### Iniciar Sesión
+
+
+Stay focused on exploring the content and don't get overwhelmed by a complex design.
+
+<--->
+
+### Anuncios
+
+The theme is powered by less than 1 MB and looks impressive on mobile devices as well as on a regular Desktop.
+
+<--->
+
+### Reportes
+
+The look and feel can be easily customized by CSS custom properties (variables), features can be adjusted by Hugo parameters.
+
+{{< /columns >}}
+<!-- 
+{{< columns >}}
+
+### Zero initial configuration
+
+Getting started in minutes. The theme is shipped with a default configuration and works out of the box.
+
+<--->
+
+### Handy shortcodes
+
+We included some (hopefully) useful custom shortcodes so you don't have to and can focus on writing amazing docs.
+
+<--->
+
+### Dark mode
+
+Powerful dark mode that detects your system preferences or can be controlled by a toggle switch.
+
+{{< /columns >}}
+
+
 
 {{< columns >}}
 
@@ -100,7 +152,7 @@ Para mayor información sobre programas, ver [Software](/software/disponible/)
 **Disco local:**  480 GB SSD
 **Network:** Infiniband FDR MT4119 | 
 
-<!-- | nGPU 2 | 
+| nGPU 2 | 
 | -- | 
 | Usado para procesamiento, gerenciado automáticamente por Slurm.
 **Procesadores:** AMD EPYC 7742 @2.24 GHz 64 cores por socket, 128 por nodo. 
@@ -108,6 +160,6 @@ Para mayor información sobre programas, ver [Software](/software/disponible/)
 **Memoria:** DRAM DDR4-1333 MHz, 128 GB por nodo 
 **Disco local:**  480 GB SSD
 **Network:** Infiniband FDR MT4119 | 
- -->
 
-</div>
+
+</div> -->
