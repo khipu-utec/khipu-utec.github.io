@@ -18,9 +18,10 @@
 /public/
 /resources/_gen/
 hugo_stats.json
-
+dump/
 # Executable may be added to repository
 hugo.exe
 hugo.darwin
 hugo.linux
 .hugo_build.lock
+.vscode/

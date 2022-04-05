@@ -1,7 +1,7 @@
 ---
-title: "Acceso e inicio de sesión"
-date: 2022-01-19T13:24:49-05:00
-
+title: "Iniciar Sesión"
+date: 2022-03-18T10:48:11-05:00
+weight: 21
 ---
 
 1. Abrir un terminal y escribir el siguiente comando reemplazando su nombre de usuario en el campo <username>. 
