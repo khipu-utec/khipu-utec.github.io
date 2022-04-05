@@ -27,6 +27,7 @@ El cluster Khipu es un recurso compartido por multiples usuarios, así que las a
   <!-- - El acceso al cluster se realiza a traves de ssh al nodo de administración. Desde este nodo se envían los trabajos a [slurm]() para que después puedan ser ejecutados en los nodos de cómputo. De ninguna manera, se deben ejecutar los trabajos directamente en el nodo de administración. -->
   - El nodo de administración es usado para acceder al cluster, editar archivos, compilar código y enviar trabajos. De ninguna manera, se deben ejecutar los trabajos directamente en el nodo de administración.
   - Toda ejecución de trabajos debe ser realizada a traves del gestor de recursos slurm. Es así como se garantizan un uso eficiente y justo de los recursos.
+  - El cluster no debe ser utilizado como almacenamiento personal. Se recomienda copiar sus resultados a su máquina personal una vez culminado el uso del cluster. 
   - Los usuarios no deben intentar acceder a cualquier archivo o programa al cual no poseen autorización o un consentimiento explicito del dueño del archivo o programa.
   - Los usuarios pueden hacer uso de las aplicaciones ya instaladas, y también compilar nuevas aplicaciones en su espacio personal solamente si fueran necesarios para el desarrollo de su proyecto o trabajo.
   - Los softwares que se instalen deben incluir una licencia válida (si es aplicable). No se puede instalar software de procedencia ilegal y/o con licencia no otorgada por los desarrolladores.
