@@ -4,11 +4,10 @@ date: 2022-03-18T10:46:56-05:00
 weight: 11
 ---
 
-Existen dos grupos de usuarios gerenciados automáticamente por [Slurm](): 1) investigación, y 2) educación.
-Ambos grupos acceden al cluster por el nodo líder para enviar trabajos a la fila de ejecución.
+Existen dos grupos de usuarios gerenciados automáticamente por [Slurm](): 1) educación, y 2) investigación. Ambos grupos acceden al cluster por el nodo líder para enviar trabajos a la fila de ejecución.
 
 
-### Grupo Educación 
+## Grupo Educación 
 
 Permite el uso del cluster para aula o laboratorio por los estudiantes a pedido de un instructor(a) registrado(a).
 Este grupo es financiado por la universidad y sus trabajos serán procesados bajo las siguientes características:
@@ -20,7 +19,7 @@ Este grupo es financiado por la universidad y sus trabajos serán procesados baj
 {{< icon "gdoc_menu" >}} Cantidad de cores por proceso 8. 
 {{< /hint >}}
 
-### Grupo Investigación 
+## Grupo Investigación 
 
 Este grupo está financiado por UTEC, proyectos de investigación (PI), Departamentos y Dirección de Escuela.
 Los fondos centrales cubren costos de infraestructura, operación y soporte. Los PI y algunas unidades y departamentos financian la adquisición de nuevos nodos de procesamiento y almacenamiento.

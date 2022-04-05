@@ -18,22 +18,22 @@ Esta es la documentación oficial del cluster Khipu. En este sitio encontrarás 
 
 {{< columns >}}
 
-### Iniciar Sesión
+### Primeros Pasos
 
 
-Stay focused on exploring the content and don't get overwhelmed by a complex design.
+Si no sabe por donde empezar con la documentación, este es un buen punto de [comienzo](/overview/primeros_pasos/). 
 
 <--->
 
 ### Anuncios
 
-The theme is powered by less than 1 MB and looks impressive on mobile devices as well as on a regular Desktop.
+La información actualizada más relevante correspondiente al funcionamiento del cluster [está aquí](/anuncios/). 
 
 <--->
 
 ### Reportes
 
-The look and feel can be easily customized by CSS custom properties (variables), features can be adjusted by Hugo parameters.
+Información actualizada cada dos minutos sobre el estado actual del cluster [está aquí](/reportes/). 
 
 {{< /columns >}}
 <!-- 
