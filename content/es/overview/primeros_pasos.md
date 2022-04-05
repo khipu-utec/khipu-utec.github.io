@@ -24,7 +24,7 @@ Una vez adquirida una cuenta, puede acceder al cluster por terminal via SSH. Dir
 
 ## Enviar un Job
 
-Dentro del cluster, usted puede enviar a ejecución sus trabajos o jobs a través de un [scheduler](https://es.wikipedia.org/wiki/Planificador). Una vez adquirida una cuenta, puede acceder al cluster por terminal via SSH. Diríjase al apartado de [inicio de sesión](/guia_de_usuario/iniciar_sesion/) para conocer cómo realizar este proceso. 
+Dentro del cluster, usted puede enviar a ejecución sus trabajos o jobs a través de un [scheduler](https://es.wikipedia.org/wiki/Planificador). Una vez adquirida una cuenta, puede acceder al cluster por terminal via SSH. Diríjase al apartado de [enviar jobs](/guia_de_usuario/ejecutando_trabajos/enviar_jobs/) para conocer cómo realizar este proceso. 
 
 ## Linux
 
