@@ -25,9 +25,9 @@ Si no sabe por donde empezar con la documentación, este es un buen punto de [co
 
 <--->
 
-### Anuncios
+### Guía de Usuario
 
-La información actualizada más relevante correspondiente al funcionamiento del cluster [está aquí](/anuncios/). 
+Si desea información detallada sobre el uso y manejo del cluster, puede consultar [aquí](/guia_de_usuario/). 
 
 <--->
 
@@ -36,6 +36,16 @@ La información actualizada más relevante correspondiente al funcionamiento del
 Información actualizada cada dos minutos sobre el estado actual del cluster [está aquí](/reportes/). 
 
 {{< /columns >}}
+
+
+{{< columns >}}
+
+### Anuncios
+
+La información actualizada más relevante correspondiente al funcionamiento del cluster [está aquí](/anuncios/). 
+
+{{< /columns >}}
+
 <!-- 
 {{< columns >}}
 
