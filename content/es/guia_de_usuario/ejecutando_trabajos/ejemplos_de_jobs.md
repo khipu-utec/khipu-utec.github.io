@@ -10,13 +10,20 @@ weight: 43
 
 ### Imprimir la fecha actual
 
-1. Crear el archivo ej1.sh:
+1. Crear el archivo fecha_actual.sh:
 
 ```bash
 #!/bin/bash
-#SBATCH --job-name=ej1 # nombre del job
-#SBATCH -c 1 # numero de cpu cores a usar
-#SBATCH --mem-per-cpu=100mb # tamano de memoria del job en ejecucion.
+
+# Nombre del job:
+#SBATCH --job-name=fecha_actual 
+
+# Cantidad de CPUs cores a usar:
+#SBATCH -c 1
+
+# Tamaño de memoria del job:
+#SBATCH --mem-per-cpu=100mb
+
 date
 sleep 10 # duerme 10s, solo para visualizar el job en la fila
 ```
@@ -24,23 +31,27 @@ sleep 10 # duerme 10s, solo para visualizar el job en la fila
 2. Enviar a ejecutar el job:
 
 ```shell
-sbatch ej1.sh
+sbatch fecha_actual.sh
 ```
 
 ### Imprimir las variables de ambiente de Slurm
 
-1. Crear el archivo ej2.sh:
+1. Crear el archivo env_vars.sh:
 
 ```bash
 #!/bin/bash
-#SBATCH -J ej2 # nombre del job
+
+# Nombre del job:
+#SBATCH --job-name=env_vars 
+
+# Comandos:
 set | grep SLURM
 ```
 
 2. Enviar a ejecutar el job:
 
 ```shell
-sbatch ej2.sh
+sbatch env_vars.sh
 ```
 
 ## Ejemplos con OpenMP, MPI e Híbridos
@@ -56,22 +67,24 @@ void Hello(void); /* Thread function */
 
 /*--------------------------------------------------------------------*/
 int main(int argc, char* argv[]) {
-int thread_count = strtol(argv[1], NULL, 10);
-# pragma omp parallel num_threads(thread_count)
-Hello();
-return 0;
+    int thread_count = strtol(argv[1], NULL, 10);
+    # pragma omp parallel num_threads(thread_count)
+        Hello();
+    return 0;
 }
 
 /* main */
-/*------------------------------------------------------------------- * Function: Hello
+/*------------------------------------------------------------------- 
+* * Function: Hello
 * * Purpose: Thread function that prints message
 * */
 void Hello(void) {
-int my_rank = omp_get_thread_num();
-int thread_count = omp_get_num_threads();
-printf("Hello from thread %d of %d\n", my_rank, thread_count); /* Hello */
+    int my_rank = omp_get_thread_num();
+    int thread_count = omp_get_num_threads();
+    printf("Hello from thread %d of %d\n", my_rank, thread_count); /* Hello */
 }
 ```
+
 Compilaremos el programa antes de crear y enviar el batch script.
 
 ```shell
@@ -87,7 +100,10 @@ module unload gcc/5.5.0
 ```bash
 #!/bin/bash
 
+# Nombre del job:
 #SBATCH --job-name=single_thread_openmp
+
+# Límite de tiempo de 10 min:
 #SBATCH --time=10:00
 
 ./prueba_openmp
@@ -106,10 +122,15 @@ sbatch single_thread_openmp.sh
 ```bash
 #!/bin/bash
 
+# Nombre del job:
 #SBATCH --job-name=multi_thread_omp_job
+# Nombre del archivo de salida:
 #SBATCH --output=multi_thread_omp_job.txt
+# Numero de tasks:
 #SBATCH --ntasks=1
+# Numero de CPUs por task:
 #SBATCH --cpus-per-task=4
+# Límite de tiempo de 10 min:
 #SBATCH --time=10:00
 
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
@@ -160,29 +181,110 @@ MPI_Finalize();
 1. Compilar el programa mpi:
 
 ```shell
-module load openmpi/2.1.6
+module load mpich/4.0
 mpicc prueba_mpi.c -o prueba_mpi
-module unload openmpi/2.1.6
+module unload mpich/4.0
 ```
 
-2. Crear el archivo ej4.sh:
+2. Crear el archivo `multi_process_mpi.sh`:
 
 ```bash
 #!/bin/bash
-#SBATCH -J ej4 # nombre del job
-#SBATCH -p investigacion # nombre de la particion 
-#SBATCH -N 2 # numero de nodos
-#SBATCH --tasks-per-node=3 # numero de tasks por nodo
 
-module load openmpi/2.1.6 # carga el modulo de openmpi version 2.1.6
-mpirun  prueba_mpi # siendo prueba_mpi el nombre del programa mpi
-module unload openmpi/2.1.6 
+# Nombre del job:
+#SBATCH -J prueba_mpi
+# Nombre de la partición:
+#SBATCH -p investigacion
+# Número de nodos:
+#SBATCH -N 2 
+# Número de tasks por nodo:
+#SBATCH --tasks-per-node=3 
+
+## Carga del modulo MPICH 4.0
+module load mpich/4.0
+# Ejecución del compilado
+mpirun  prueba_mpi
+## Descarga del módulo
+module unload mpich/4.0
 ```
 
 3. Enviar a ejecutar el job:
 
 ```shell
-sbatch ej4.sh
+sbatch multi_process_mpi.sh
+```
+
+
+### MPI Y OpenMP a la vez (Híbrido)
+
+Para este ejemplo usaremos el siguiente codigo hibrido y lo guardaremos en un archivo `hibrido.c`.
+
+```c++
+#include <stdio.h>
+#include <omp.h>
+#include "mpi.h"
+
+int main(int argc, char *argv[]) {
+    int numprocs, rank, namelen;
+    char processor_name[MPI_MAX_PROCESSOR_NAME];
+    int iam = 0, np = 1;
+
+    MPI_Init(&argc, &argv);
+    MPI_Comm_size(MPI_COMM_WORLD, &numprocs);
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    MPI_Get_processor_name(processor_name, &namelen);
+
+    #pragma omp parallel default(shared) private(iam, np)
+    {
+    np = omp_get_num_threads();
+    iam = omp_get_thread_num();
+    printf("Hello from thread %d out of %d from process %d out of %d on %s\n",
+            iam, np, rank, numprocs, processor_name);
+    }
+
+    MPI_Finalize();
+}
+```
+
+1. Compilar el programa híbrido:
+
+```shell
+module load mpich/4.0
+mpicc -fopenmp hibrido.c -o hibrido
+module unload mpich/4.0
+```
+
+2. Crear el archivo `hibrido_mpi_openmp.sh`:
+
+```bash
+#!/bin/bash
+
+# Un Job script para la ejecución de un código híbrido MPI-OpenMP
+
+#SBATCH --job-name=hibrido_mpi_openmp
+#SBATCH --output=hibrido_mpi_openmp.out
+#SBATCH --ntasks=4
+#SBATCH --cpus-per-task=8
+#SBATCH --partition=docencia
+
+# Cargar el modulo MPI.
+module load mpich/4.0
+
+# Configurar el valor de  OMP_NUM_THREADS con el numero de CPUs por task solicitado.
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+
+# Ejecutar el proceso con mpirun. Puede notar que no es necesario especificar el flag de MPI
+# '-n' puesto que automaticamente utiliza el valor de la configuración de Slurm realizada
+
+mpirun ./hibrido
+
+module unload mpich/4.0
+```
+
+3. Enviar a ejecutar el job:
+
+```shell
+sbatch hibrido_mpi_openmp.sh
 ```
 
 ## Ejemplos Diversos
@@ -308,8 +410,28 @@ echo $var1
 sbatch --export=var1=15 ej8-2.sh
 ```
 
+## Jobs en GPU
 
-### Información adicional
+```bash
+#!/bin/bash
+
+#SBATCH --job-name=deep_learn
+#SBATCH --output=gpu_job.txt
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=2
+#SBATCH --gpus=p100:2
+#SBATCH --partition=gpu
+#SBATCH --time=10:00
+
+module load CUDA
+module load cuDNN
+# using your anaconda environment
+source activate deep-learn
+python my_tensorflow.py
+
+
+```
+## Información adicional
 
 - [Tutorial de Linux](https://www.tecmint.com/free-online-linux-learning-guide-for-beginners/)
 - [Documentación de Slurm](https://slurm.schedmd.com/quickstart.html)
