@@ -410,7 +410,7 @@ echo $var1
 sbatch --export=var1=15 ej8-2.sh
 ```
 
-## Jobs en GPU
+<!-- ## Jobs en GPU
 
 ```bash
 #!/bin/bash
@@ -428,7 +428,7 @@ module load cuDNN
 # using your anaconda environment
 source activate deep-learn
 python my_tensorflow.py
-
+ -->
 
 ```
 ## Información adicional
