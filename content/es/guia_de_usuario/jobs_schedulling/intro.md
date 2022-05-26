@@ -1,21 +1,25 @@
 ---
-title: "Sobre Slurm"
+title: "Introducción"
 date: 2022-03-18T10:54:30-05:00
 weight: 41
 ---
 
 {{< toc >}}
 
-Para enviar a ejecutar, cancelar y revisar el status de los *jobs* en Khipu, hacemos uso del gestor de recursos y scheduler de jobs [Slurm](https://slurm.schedmd.com/documentation.html).
+Dado que Khipu es un recurso compartido, hacemos uso de un gestor de recursos como [Slurm](https://slurm.schedmd.com/documentation.html) que nos permitirá  enviar, cancelar y revisar cargas de trabajo o *jobs*.
 
 
 ## Slurm
 Simple Linux Utility of Resource Mangement (Slurm), es el encargado de coordinar los recursos de todos los nodos del cluster y asignarlos de acuerdo la prioridad de los jobs, cantidad de recursos solicitados y cantidad de recursos disponibles. [Slurm](https://slurm.schedmd.com/documentation.html) tiene un reparto de prioridad justo, donde cada job tiene una prioridad que depende de: **a)** los recursos usados por el usuario o grupo, **b)** la contribución del grupo al clúster y **c)** el tiempo en fila. Por favor, revisar [grupos en Khipu](/cuentas/cuentas_del_cluster/) para más detalles de recursos.
 
-### Ciclo de Vida de un Job
+## Ciclo de Vida de un Job
 
 
 Enviar un job involucra especificar los recursos necesarios y la secuencia de comandos que deseamos ejecutar en los nodos de cómputo. Los pedidos se realizan a grupos de nodos de cómputo llamadas particiones. Las particiones, posen sus límites y propósitos de uso. En Khipu tenemos particiones especificas para cada [grupo de usuarios](/cuentas/cuentas_del_cluster/). Una vez enviados, los jobs esperan en una cola y están sujetos a factores extra como sus prioridades de schedulling. Cuando el proceso de schedulling de un job inicia, los comandos o aplicaciones especificados son ejecutados en los nodos de computo que el scheduller asigna para satisfacer las necesidades de recurso solicitadas. El resultado de la ejecución será impreso en pantalla o escrito en un archivo dependiendo de la forma como se envío el job.
+
+## Tipos de Jobs
+
+En Slurm podemos diferenciar los siguientes tipos de *jobs*: batch jobs y jobs interactivos.
 
 ### Batch Jobs
 

@@ -1,12 +1,12 @@
 ---
-title: "Ejecutar y Revisar Jobs"
+title: "Enviar Jobs"
 date: 2022-03-18T10:54:30-05:00
 weight: 42
 ---
 
 {{< toc >}}
 
-## Comandos Básicos de Slurm
+# Comandos básicos de Slurm
 
 A continuación se muestra una lista con los comandos de Slurm más usados:
 
@@ -46,9 +46,9 @@ seff 78910
 srun --pty -t 2:00:00 --mem=8G -p interactive bash
 ```
 
-## Opciones de Job Request más comunes
+## Job request más comunes
 
-Las siguientes opciones modifican el tamaño, largo y el comportamiento del job qye se envía. Estos pueden especificarse llamando a `srun` o `sbatch`, o dentro de un [batch job](/guia_de_usuario/ejecutando_trabajos/slurm/#batch-jobs). Si se especifican las opciones en los argumentos de `sbatch` y en el script del [batch job](/guia_de_usuario/ejecutando_trabajos/slurm/#batch-jobs) al mismo tiempo, las opciones pasadas al comando `sbatch` serán las que se tomarán en cuenta. Si no se especifica valor para alguna de las opciones, los valores por defecto serán los que se empleen. 
+Las siguientes opciones modifican el tamaño, largo y el comportamiento del job que se envía. Estos pueden especificarse llamando a `srun` o `sbatch`, o dentro de un [batch job](/guia_de_usuario/ejecutando_trabajos/slurm/#batch-jobs). Si se especifican las opciones en los argumentos de `sbatch` y en el script del [batch job](/guia_de_usuario/ejecutando_trabajos/slurm/#batch-jobs) al mismo tiempo, las opciones pasadas al comando `sbatch` serán las que se tomarán en cuenta. Si no se especifica valor para alguna de las opciones, los valores por defecto serán los que se empleen. 
 
 <style>
 .myTable {
