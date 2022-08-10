@@ -6,7 +6,6 @@ weight: 50
 
 {{< toc >}}
 
-
 Se recomienda realizar regularmente copias de sus archivos en Khipu a sus ordenadores locales. Es importante recordar que **Khipu no puede ser usado como almacenamiento personal en la nube**. Por otro lado, se recomienda comprimir previamente los archivos que se van a transferir a fin de agilizar el proceso.
 ## Transferir archivos usando scp
 
