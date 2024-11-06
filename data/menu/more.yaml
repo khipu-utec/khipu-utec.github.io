@@ -1,9 +1,0 @@
----
-more:
-  - name: Anuncios
-    ref: "/anuncios"
-    icon: "gdoc_notification"
-  - name: "Ver repositorio"
-    ref: "https://github.com/khipu-utec/khipu-utec.github.io"
-    external: true
-    icon: "gdoc_github"

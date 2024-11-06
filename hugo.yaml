@@ -1,0 +1,94 @@
+# Hugo configuration file
+title: Khipu
+baseURL: https://docs.khipu.utec.edu.pe
+enableInlineShortcodes: true
+# import hextra as module
+theme: hextra
+
+markup:
+  # allow raw html
+  goldmark:
+    renderer:
+      unsafe: true
+
+  # enable hextra syntax highlight
+  highlight:
+    noClasses: false
+
+outputs:
+  home: [HTML]
+  page: [HTML]
+  section: [HTML, RSS]
+
+defaultContentLanguage: es
+
+menu:
+  main:
+    - identifier: documentation
+      name: Docs
+      pageRef: /docs
+      weight: 1
+    - identifier: anuncios
+      name: Anuncios
+      pageRef: /anuncios
+      weight: 2
+    - identifier: about
+      name: About
+      pageRef: https://web.khipu.utec.edu.pe
+      weight: 3
+    - name: Search
+      weight: 4
+      params:
+        type: search
+    - name: GitHub
+      weight: 5
+      url: "https://github.com/khipu-utec/khipu-utec.github.io"
+      params:
+        icon: github
+  
+  sidebar:
+    - identifier: more
+      name: Más
+      params:
+        type: separator
+      weight: 1
+    - identifier: about
+      name: "Sobre Khipu"
+      pageRef: "https://web.khipu.utec.edu.pe"
+      weight: 2
+    - identifier: slurm
+      name: "Slurm ↗"
+      url: "https://slurm.schedmd.com/"
+      weight: 3
+
+params:
+  theme:
+    default: dark
+    displayToggle: true
+
+  navbar:
+    displayTitle: true
+    displayLogo: true
+    logo:
+      path: /logo.png
+      dark: /logo.png
+      link: /
+      width: 20
+      height: 10
+    width: wide
+
+  footer:
+    displayCopyright: true
+    displayPoweredBy: true
+
+  editURL:
+    enable: true
+    base: "https://github.com/khipu-utec/khipu-utec.github.io/edit/main/content"
+  
+  displayUpdatedDate: true
+  dateFormat: "January 2, 2006"
+
+  anuncios:
+    list:
+      displayTags: true
+
