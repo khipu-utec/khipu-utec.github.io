@@ -1,0 +1,109 @@
+site_name: ""
+# site_url: https://mydomain.org/mysite
+# repo_url: https://github.com/khipu-utec/khipu-utec.github.io
+# repo_name: khipu-utec/khipu-utec.github.io
+nav:
+  - Home: index.md
+  - Primeros Pasos: indexq.md
+  - Guía de Usuario: indexq.md
+  - Anuncios:
+    - news/index.md
+  - Tutoriales: abc.md
+  - Soporte: abc2.md
+#  - Infraestructura: index.md
+theme:
+  name: material
+  logo: assets/logos/logo.webp
+  favicon: assets/logos/favicon-16x16.png
+  language: es
+  palette:
+    primary: white
+  icon:
+    previous: fontawesome/solid/angle-left
+    next: fontawesome/solid/angle-right
+    tag:
+      python: fontawesome/brands/python
+  # behave like single page app
+  # font:
+  #   text: Popins
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.prune # only load which is visible
+    - navigation.indexes
+    - toc.follow
+    - navigation.top # back to top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - announce.dismiss
+
+extra:
+  consent:
+    title: Cookie consent
+    description: >- 
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+    actions:
+      - accept
+      - manage
+  social:
+    - icon: fontawesome/solid/globe
+      link: mailto:khipu@utec.edu.pe
+      name: Página Web
+    - icon: fontawesome/brands/github 
+      link: https://fosstodon.org/@squidfunk
+    - icon: fontawesome/solid/envelope
+      link: mailto:khipu@utec.edu.pe
+      name: Correo electrónico
+    - icon: fontawesome/solid/headset
+      link: https://servicedesk.utec.edu.pe/
+      name: Soporte
+
+  tags:
+    Python: python
+
+plugins:
+  - search
+  - meta # meta for blog
+  - blog:
+      blog_dir: news
+  - tags
+  - git-revision-date-localized:
+      enable_creation_date: true
+  - git-committers:
+      repository: khipu-utec/khipu-utec.github.io
+      branch: main
+  - encryptcontent:
+      password_file: 'passwords.yml'
+  # - social: # revisar luego
+  #     cards_layout_options:
+  #       font_family: Noto Sans SC
+markdown_extensions:
+  - pymdownx.blocks.caption
+  - abbr
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+  - admonition  # callout
+  - attr_list # add html objects
+  - md_in_html # md inside html
+  - footnotes
+  - tables # create tables
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji 
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.caret # highlight, sub and supe script
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.keys # key rendering
+  - pymdownx.snippets
+
+# to load abbreviations as is outside docs/
+watch:
+  - includes
+copyright: Copyright &copy; 2025 Khipu - <a href="#__consent">Change cookie settings</a>
