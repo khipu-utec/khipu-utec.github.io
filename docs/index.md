@@ -32,25 +32,25 @@ hide:
 
     ---
 
-    [:octicons-arrow-right-24: Enviar Jobs](storage/index.md)<br>
-    [:octicons-arrow-right-24: Monitorear Jobs](storage/parallel-filesystems/lustre.md)<br>
-    [:octicons-arrow-right-24: Ejemplos](storage/lumio/index.md)
+    [:octicons-arrow-right-24: Enviar Jobs](guia-de-usuario/enviar-jobs/index.md)<br>
+    [:octicons-arrow-right-24: Monitorear Jobs](guia-de-usuario/enviar-jobs/monitorear.md)<br>
+    [:octicons-arrow-right-24: Ejemplos](guia-de-usuario/ejemplos/introductorios.md)
 
 -   **Software**
 
     ---
 
-    [:octicons-arrow-right-24: Software Disponible](runjobs/lumi_env/softwarestacks.md)<br>
-    [:octicons-arrow-right-24: Uso de software](software/installing/easybuild.md)<br>
-    [:octicons-arrow-right-24: Instalación de software](software/installing/spack.md)
+    [:octicons-arrow-right-24: Software Disponible](guia-de-usuario/software/lista.md)<br>
+    [:octicons-arrow-right-24: Uso de software](guia-de-usuario/software/uso.md)<br>
+    [:octicons-arrow-right-24: Instalación de software](guia-de-usuario/software/instalacion.md)
 
 -   **Tutoriales**
 
     ---
 
     [:octicons-arrow-right-24: Uso de Apptainer](tutoriales/apptainer.md)<br>
-    [:octicons-arrow-right-24: Uso de jupyter notebook/lab](tutoriales/jupyter.md)<br>
-    [:octicons-arrow-right-24: Reinicio de jobs en Pytorch](tutoriales/reinicio-de-jobs.md)
+    [:octicons-arrow-right-24: Uso de jupyter notebook/lab](tutoriales/jupyter-pip.md)<br>
+    [:octicons-arrow-right-24: Reinicio de jobs en Pytorch](tutoriales/reinicio-job-pytorch.md)
 
 -   **Enlaces de Interés**
 

@@ -1,6 +1,6 @@
 [putty]: https://www.putty.org/
 [mesa-de-ayuda]: servicedesk.utec.edu.pe
-[configurar-ssh-keys]: ../helpdesk/index.md
+[configurar-ssh-keys]: configurar-llaves-ssh.md
 
 # Acceder a Khipu
 

@@ -1,5 +1,1 @@
----
-title: "GPU"
-weight: 38
----
-
+# GPU

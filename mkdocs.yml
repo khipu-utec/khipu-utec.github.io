@@ -19,8 +19,24 @@ nav:
     - Configurar llaves SSH: primeros-pasos/configurar-llaves-ssh.md
     - Transferir archivos: primeros-pasos/transferir-archivos.md
     - Siguientes pasos: primeros-pasos/siguientes-pasos.md
-  - Guía de Usuario: 
-    - Ejecutar jobs: guia-de-usuario/ejecutar-jobs/index.md
+  - Guía de Usuario:  
+    - Enviar jobs: 
+      - guia-de-usuario/enviar-jobs/index.md
+      - Comandos Básicos: guia-de-usuario/enviar-jobs/comandos-basicos.md
+      - Creación de Script: guia-de-usuario/enviar-jobs/creacion-script.md
+      - Parámetros de Slurm: guia-de-usuario/enviar-jobs/parametros.md
+      - Particiones: guia-de-usuario/enviar-jobs/particiones.md
+      - Monitorear jobs: guia-de-usuario/enviar-jobs/monitorear.md
+    - Software:
+      - guia-de-usuario/software/index.md
+      - Uso de software: guia-de-usuario/software/uso.md
+      - Software disponible: guia-de-usuario/software/lista.md
+      - Instalación: guia-de-usuario/software/instalacion.md
+    - Ejemplos:
+      - Introductorios: guia-de-usuario/ejemplos/introductorios.md
+      - MPI/OpenMP: guia-de-usuario/ejemplos/mpi-openmp.md
+      - Python: guia-de-usuario/ejemplos/python.md
+      - Miniconda: guia-de-usuario/ejemplos/miniconda.md
   - Tutoriales: 
     - Reinicio de Jobs: tutoriales/reinicio-job-pytorch.md
     - Apptainer: tutoriales/apptainer.md
