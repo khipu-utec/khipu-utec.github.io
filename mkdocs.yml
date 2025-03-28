@@ -1,23 +1,45 @@
 site_name: ""
-# site_url: https://mydomain.org/mysite
+site_url: https://docs.khipu.utec.edu.pe
+site_description: Documentación de Khipu
+site_author: Roosevelt Ubaldo Chavez
 # repo_url: https://github.com/khipu-utec/khipu-utec.github.io
 # repo_name: khipu-utec/khipu-utec.github.io
 nav:
   - Home: index.md
-  - Primeros Pasos: indexq.md
-  - Guía de Usuario: indexq.md
+  - Sobre Khipu:
+    - info/index.md
+    - Infraestructura: info/infraestructura.md
+    - Políticas de uso: info/politicas-de-uso.md
+    - Tipos de cuentas: info/tipos-de-cuentas.md
+  - Primeros pasos:
+    - primeros-pasos/index.md
+    - Solicitar acceso: primeros-pasos/solicitar-acceso.md
+    - Acceder a Khipu: primeros-pasos/acceder-a-khipu.md
+    - Cambiar contraseña: primeros-pasos/cambiar-contrasena.md
+    - Configurar llaves SSH: primeros-pasos/configurar-llaves-ssh.md
+    - Transferir archivos: primeros-pasos/transferir-archivos.md
+    - Siguientes pasos: primeros-pasos/siguientes-pasos.md
+  - Guía de Usuario: 
+    - Ejecutar jobs: guia-de-usuario/ejecutar-jobs/index.md
+  - Tutoriales: 
+    - Reinicio de Jobs: tutoriales/reinicio-job-pytorch.md
+    - Apptainer: tutoriales/apptainer.md
+    - Jupyter [pip]: tutoriales/jupyter-pip.md
+    - Jupyter [conda]: tutoriales/jupyter-conda.md
   - Anuncios:
-    - news/index.md
-  - Tutoriales: abc.md
-  - Soporte: abc2.md
-#  - Infraestructura: index.md
+    - anuncios/index.md
+  - Soporte: 
+    - soporte/index.md
+    - ¿Cómo crear un ticket de soporte?: soporte/mesa-de-ayuda.md
 theme:
   name: material
+  custom_dir: mkdocs_khipu
   logo: assets/logos/logo.webp
   favicon: assets/logos/favicon-16x16.png
   language: es
   palette:
     primary: white
+    scheme: khipu
   icon:
     previous: fontawesome/solid/angle-left
     next: fontawesome/solid/angle-right
@@ -53,10 +75,11 @@ extra:
       - manage
   social:
     - icon: fontawesome/solid/globe
-      link: mailto:khipu@utec.edu.pe
+      link: https://web.khipu.utec.edu.pe/
       name: Página Web
     - icon: fontawesome/brands/github 
-      link: https://fosstodon.org/@squidfunk
+      link: https://github.com/khipu-utec
+      name: Organización en GitHub
     - icon: fontawesome/solid/envelope
       link: mailto:khipu@utec.edu.pe
       name: Correo electrónico
@@ -71,13 +94,13 @@ plugins:
   - search
   - meta # meta for blog
   - blog:
-      blog_dir: news
+      blog_dir: anuncios
   - tags
-  - git-revision-date-localized:
-      enable_creation_date: true
-  - git-committers:
-      repository: khipu-utec/khipu-utec.github.io
-      branch: main
+  # - git-revision-date-localized:
+  #     enable_creation_date: true
+  # - git-committers:
+  #     repository: khipu-utec/khipu-utec.github.io
+  #     branch: main
   - encryptcontent:
       password_file: 'passwords.yml'
   # - social: # revisar luego
@@ -90,6 +113,10 @@ markdown_extensions:
       auto_append:
         - includes/abbreviations.md
   - admonition  # callout
+  - pymdownx.details
+  - pymdownx.superfences  # tabs
+  - pymdownx.tabbed:
+      alternate_style: true
   - attr_list # add html objects
   - md_in_html # md inside html
   - footnotes
@@ -106,4 +133,7 @@ markdown_extensions:
 # to load abbreviations as is outside docs/
 watch:
   - includes
+
+extra_css:
+  - stylesheets/extra.css
 copyright: Copyright &copy; 2025 Khipu - <a href="#__consent">Change cookie settings</a>

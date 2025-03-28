@@ -7,7 +7,7 @@ tags:
   - Bar
 links:
   - abc.md
-
+draft: true
 level: admin
 ---
 
