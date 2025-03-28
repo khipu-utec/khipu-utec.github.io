@@ -1,0 +1,150 @@
+<!-- Custom HTML site displayed as the Home chapter -->
+
+{% extends "main.html" %}
+{% block hero %} 
+    <!-- Additional styles for home page -->
+    <style>
+
+        /* Linear gradient for home title*/
+        .tx-container {
+            padding-top: .0rem;
+            background: linear-gradient(to bottom, var(--md-footer-bg-color), wheat);
+            /* min-height: 60vh */
+        }
+
+        .tx-hero {
+            margin: 32px 2.8rem;
+            color: var(--md-primary-bg-color);
+            display: flex;
+            justify-content: initial;
+        }
+
+        .tx-hero h1 {
+            margin-bottom: 1rem;
+            color: currentColor;
+            font-weight: 700
+        }
+        .tx-hero__image{
+            display: none;
+        }
+
+        .tx-hero__content {
+            padding-bottom: 1rem;
+            max-width: 22rem;
+            margin-top: 3.5rem;
+            margin-bottom: 3.5rem;
+            margin-left: 1.0rem;
+            margin-right: 4.0rem;
+        }
+
+        .tx-hero__content h1{
+            font-size: 5em;
+        }
+
+        .tx-buttons-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+        }
+
+        /* Hide last edit */
+        .md-source-file {
+            display: none
+        }
+
+        /* Hide page title */
+        /* .md-typeset #_1 {
+            display: none
+        } */
+
+        .tx-hero .md-button--primary {
+            background-color: var(--md-button-bg-color);
+            border-color: var(--md-button-bg-color)
+        }
+
+        .tx-hero .md-button:focus,
+        .tx-hero .md-button:hover {
+            background-color: var(--md-button-bg-color--accent);
+            border-color: var(--md-button-bg-color--accent)
+        }
+
+        /* Show Khipu logo when header logo hided*/
+        @media screen and (max-width: 76.2344em) {
+            .tx-hero__image{
+                display: block;
+                max-width: 17rem;
+                align-self: center;
+            }
+
+            .tx-hero__content{
+                align-self: initial;
+            }
+
+            .tx-hero {
+                flex-direction: column;
+            }
+
+        }
+
+        /* Adjust font for small screens */
+        @media screen and (max-width:30em) {
+            .tx-container {
+                height: calc(100vh - 52px);
+            }
+
+            .md-typeset {
+                height: 100%;
+            }
+
+            .tx-hero {
+                height: 100%;
+                justify-content: space-around;
+            }
+
+            .tx-hero h1 {
+                font-size: 2.4rem
+            }
+
+            .tx-hero__image {
+                min-width: 10rem;
+            }
+
+            .tx-hero__content {
+                margin: 3.5rem auto;
+            }
+           
+        }
+
+    </style>
+
+    <!-- Main site Entry button descriptions -->
+    <section class="tx-container">
+        <div class="md-grid md-typeset">
+            <div class="tx-hero">
+                <div class="tx-hero__image">
+                    <img src="assets/logos/logo.webp" draggable="false">
+                  </div>
+                <div class="tx-hero__content">
+                <h1> {{ page.meta.title }} </h1>
+                <p>{{ page.meta.description }}</p>
+
+                    <div class="tx-buttons-actions">             
+                        <a 
+                        href="{{ 'primeros-pasos/' | url }}"
+                        title="{{ page.meta.title | striptags }}" 
+                        class="md-button md-button--primary">
+                        Primeros Pasos
+                        </a>
+                        <!-- <a 
+                            href="{{ 'publications/' | url }}"
+                            title="{{ lang.t('source.link.title') }}" 
+                            class="md-button">
+                            Publicaciones
+                        </a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

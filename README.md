@@ -1,26 +1,39 @@
 # Khipu-docs
 
-Khipudocs is the documentation website of the HPC cluster Khipu made with [Hugo](https://gohugo.io/). We are using [Geekdocs](https://geekdocs.de/) as the theme for this website. To change any template or partial of this template, use its [repo](https://github.com/khipu-utec/hugo-geekdoc) 
-
+Khipudocs is the documentation website of the HPC cluster Khipu made written on Markdown and converted to HTML/CSS/JS with [mkdocs](https://www.mkdocs.org/). The theme used is [Material for Mkdocs](https://squidfunk.github.io/mkdocs-material/) with custom modifications. 
 
 ## Setup Locally
 
-First of all, you need to install Hugo in your local machine. You can follow the [hugo website](https://gohugo.io/getting-started/quick-start/#step-1-install-hugo) to do that. Also, you need NodeJs 16.0.4 to bundle the Hugo theme.
+You must have a working `python3` installation with `pip3` package manager. Then you need to run the following commands:
 
-Then you need to run the following commands:
+1. Download a copy of the repository:
 
-```bash
-# Locate to the theme folder
-cd themes/hugo-geekdoc
-# Install theme dependencies
-npm install 
-# Bundle the theme
-npm run build
-# Locate to the root folder
-cd ../..
-# Run the hugo server
-hugo server -D
+    ```bash
+    git clone git@github.com:khipu-utec/khipu-utec.github.io.git
+    cd khipu-utec.github.io
+    ```
+
+2. Create a python virtual environment and activate it. 
+
+    ```bash
+    # Create virtual environment
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
+ 3. Install the python dependencies
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+## Edit with live preview
+
+After you finish the setup above, you can server the website running the following commands:
+
+```shell
+mkdocs serve
 ```
+This command will server the site on http://127.0.0.1:8000/. Every markdown file you edit inside `docs/` folder will be reloaded automatically.
 
 ## How to Deploy?
 
