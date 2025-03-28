@@ -112,11 +112,11 @@ plugins:
   - blog:
       blog_dir: anuncios
   - tags
-  # - git-revision-date-localized:
-  #     enable_creation_date: true
-  # - git-committers:
-  #     repository: khipu-utec/khipu-utec.github.io
-  #     branch: main
+  - git-revision-date-localized:
+      enable_creation_date: true
+  - git-committers:
+      repository: khipu-utec/khipu-utec.github.io
+      branch: main
   - encryptcontent:
       password_file: 'passwords.yml'
   # - social: # revisar luego
