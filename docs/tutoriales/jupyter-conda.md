@@ -1,3 +1,6 @@
+---
+level: restricted
+---
 # Jupyter Lab / Notebook [conda]
 
 To run Jupyter Lab/Notebook in Khipu you have the following options:
