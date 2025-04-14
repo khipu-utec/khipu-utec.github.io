@@ -140,7 +140,8 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji 
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-  - pymdownx.caret # highlight, sub and supe script
+  - pymdownx.critic # highlight
+  - pymdownx.caret # sub and supe script
   - pymdownx.mark
   - pymdownx.tilde
   - pymdownx.keys # key rendering
