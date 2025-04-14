@@ -123,6 +123,33 @@ Usados para procesamiento de jobs que requieren de CPU y RAM. Es gerenciado auto
     </tbody>
 </table>
 
+### n006
+<table>
+    <thead>
+        <tr>
+            <th colspan="2">Especificaciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><b>Nombre</b></td>
+            <td>n006</td>
+        </tr>
+        <tr>
+            <td><b>Procesador</b></td>
+            <td>Intel(R) Xeon(R) Gold 5418Y 2.0 GHz 24 cores por socket, 48 por nodo. </td>
+        </tr>
+        <tr>
+            <td><b>Memoria</b></td>
+            <td> 1TB DRAM DDR5 5600MHz</td>
+        </tr>
+         <tr>
+            <td><b>Red</b></td>
+            <td>Infiniband Mellanox MT28908</td>
+        </tr>
+    </tbody>
+</table>
+
 ## Nodos GPU
 
 Usados para procesamiento de jobs que requieren de CPU, RAM y/o GPU. Es gerenciado automáticamente por Slurm.
@@ -190,37 +217,6 @@ Usados para procesamiento de jobs que requieren de CPU, RAM y/o GPU. Es gerencia
 </table>
 
 
-### g003
-<table>
-    <thead>
-        <tr>
-            <th colspan="2">Especificaciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><b>Nombre</b></td>
-            <td>g003</td>
-        </tr>
-        <tr>
-            <td><b>Procesador</b></td>
-            <td>Intel(R) Xeon(R) Gold 5418Y 2.0 GHz 24 cores por socket, 48 por nodo. </td>
-        </tr>
-        <tr>
-            <td><b>Gráficos</b></td>
-            <td>NVIDIA RTX A6000 48 GB GDDR6</td>
-        </tr>
-        <tr>
-            <td><b>Memoria</b></td>
-            <td> 1TB DRAM DDR5 5600MHz</td>
-        </tr>
-         <tr>
-            <td><b>Red</b></td>
-            <td>Infiniband Mellanox MT28908</td>
-        </tr>
-    </tbody>
-</table>
-
 ### ag001
 <table>
     <thead>
@@ -244,6 +240,40 @@ Usados para procesamiento de jobs que requieren de CPU, RAM y/o GPU. Es gerencia
         <tr>
             <td><b>Memoria</b></td>
             <td> 1TB DRAM DDR4</td>
+        </tr>
+         <tr>
+            <td><b>Red</b></td>
+            <td>Infiniband Mellanox MT28908</td>
+        </tr>
+    </tbody>
+</table>
+
+
+## Nodos Ciencia de Datos
+
+### ds001
+<table>
+    <thead>
+        <tr>
+            <th colspan="2">Especificaciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><b>Nombre</b></td>
+            <td>ds001</td>
+        </tr>
+        <tr>
+            <td><b>Procesador</b></td>
+            <td>Intel(R) Xeon(R) Gold 5418Y 2.0 GHz 24 cores por socket, 48 por nodo. </td>
+        </tr>
+        <tr>
+            <td><b>Gráficos</b></td>
+            <td>NVIDIA RTX A6000 48 GB GDDR6</td>
+        </tr>
+        <tr>
+            <td><b>Memoria</b></td>
+            <td> 1TB DRAM DDR5 5600MHz</td>
         </tr>
          <tr>
             <td><b>Red</b></td>

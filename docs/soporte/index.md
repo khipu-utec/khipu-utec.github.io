@@ -1,4 +1,4 @@
-[mesa-de-ayuda]: servicedesk.utec.edu.pe
+[mesa-de-ayuda]: https://servicedesk.utec.edu.pe
 [mail-khipu]: mailto:khipu@utec.edu.pe
 
 # Soporte

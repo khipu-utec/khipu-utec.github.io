@@ -1,3 +1,6 @@
+---
+level: restricted
+---
 # Jupyter Lab / Notebook [pip]
 
 To run Jupyter Lab/Notebook in Khipu you have the following options:
