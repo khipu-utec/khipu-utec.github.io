@@ -8,6 +8,8 @@
   --md-button-bg-color: var(--md-accent-fg-color);
   --md-button-bg-color--accent: var(--md-typeset-a-color);
 
+  --md-code-bg-color: hsla(194, 47%, 68%, 0.15);
+
 }
 
 .md-header__inner {
@@ -23,8 +25,21 @@
   background-color: var(--md-banner-bg-color);
 }
 
-
 .md-header-nav__title, .md-header__title {
   font-weight: 500;
   font-size: 1.1rem;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--md-accent-fg-color);
+  color: var(--md-default-bg-color);
+}
+
+.md-typeset h1 {
+  color: var(--md-default-fg-color);
+  font-weight: 500;
+}
+
+.md-typeset h2 {
+  font-weight: 500;
 }

@@ -1,181 +1,37 @@
-# Enviar jobs
+[slurm]: https://slurm.schedmd.com/documentation.html
+[politica-de-uso]:/info/politicas-de-uso/
+[particiones]:/guia-de-usuario/enviar-jobs/particiones/
+[comandos-basicos]:/guia-de-usuario/enviar-jobs/comandos-basicos/
+[jobs-interactivos]:/guia-de-usuario/enviar-jobs/jobs-interactivos/
+
+# Sobre el envío de Jobs
 
 !!! warning "¡El nodo de acceso no es para realizar cómputos!"
-      El nodo de acceso es compartido por todos los usuarios y no debe ser usado para ejecutar tareas intensas. Esas tareas deben ser enviadas al gestor de Slurm para que este asigne un nodo de cómputo donde ejecutarse.
+      Use [Slurm][slurm] para enviar sus cargas de trabajo a los diferentes nodos de cómputo. 
 
 
-Dado que Khipu es un recurso compartido, hacemos uso de un gestor de recursos como [Slurm](https://slurm.schedmd.com/documentation.html) que nos permitirá  enviar, cancelar y revisar cargas de trabajo o *jobs*.
+Khipu es un recurso compartido por múltiples usuarios al mismo tiempo. Para asignar y gestionar los recursos de manera justa hacemos uso del gestor de trabajos [Slurm][slurm]. A través de [Slurm][slurm] los usuarios puede enviar, cancelar y revisar sus cargas de trabajo o *jobs* a los diferentes nodos de cómputo disponibles.
+
+Los *jobs* pueden ser ejecutados de dos maneras distintas:
+
+1. [**Modo *batch*:**][comandos-basicos] permite enviar un script que contiene todo lo necesario para la ejecución de su *job*. El cual se ejecutará de manera ininterrupida por el perido de tiempo asignado en el script y permitido a su tipo de cuenta. De esta manera usted manda a ejecutar su carga de trabajo y no tiene la necesitar de mantenerse conectado a Khipu para que continue su ejecución. La salida de su *job* será escrita de manera continua en un archivo, el cual usted puede consultar multiples veces para ver el avance de su trabajo hasta su finalización. 
+
+2. [**Modo interactivo:**][jobs-interactivos] permite a los usuarios interactuar con su *job* en ejecución de manera directa a través de la línea de comandos. Este modo es similar a reservar recursos en una nodo, conectarte a él y luego de manera manual (interactiva) ejecutar cada unos de los comandos que requiera para completar su trabajo. Sin embargo, si su conexión con el nodo es interrupida o deja de tener actividad, su *job* será terminado. Este tipo de *jobs* es ideal para cargas de trabajo pequeñas, preparar o realizar pequeñas pruebas de la ejecución de jobs más largos o realizar labores de debugging. 
+
+Los *jobs* que envíe a través de [Slurm][slurm] serán puestos en ejecución dependiendo de su tipo de cuenta y la cantidad de recursos solicitados (núcleos CPU, memoría RAM o  GPU). Generalmente, los *jobs* con pedidos de recursos más modestos y acotados suelen esperar menos tiempo en la fila de [Slurm][slurm]. Si desconoce la cantidad de recursos que su *job* demandará puede usar las [particiones][particiones] `debug` o `debug-gpu` para realizar pruebas antes de enviar sus jobs a otras [particiones][particiones] más demandadas. 
 
 
-
-## Slurm
-
-[*Simple Linux Utility of Resource Mangement (Slurm)*](https://slurm.schedmd.com/documentation.html), es el encargado de coordinar los recursos de todos los nodos del cluster y asignarlos de acuerdo la prioridad de los jobs, cantidad de recursos solicitados y cantidad de recursos disponibles.
-
-A continuación, se proporciona una guía básica sobre cómo utilizar SLURM para ejecutar trabajos en Khipu.
-
-### 1. Comandos Básicos de SLURM
-
-#### 1.1. `srun` - Ejecutar trabajos
-
-El comando `srun` es utilizado para ejecutar jobs de manera directa o interactiva. Se puede especificar cuántos nodos, CPUs, memoria, etc., se requiere utilizar.
-
-**Sintaxis básica:**
-
-```bash
-srun [opciones] [comando]
-```
-Ejemplo: Ejecutar un script en un solo nodo con una CPU:
-
-```bash
-srun -n 1 --ntasks=1 --cpus-per-task=1 bash mi_script.sh
-```
-
-Donde `mi_script.sh` contiene lo siguiente:
-
-```bash
-#!/bin/bash
-
-echo "Iniciando en $(date)"
-echo "El job fue enviado a la partición ${SLURM_JOB_PARTITION}"
-echo "Nombre del job: ${SLURM_JOB_NAME}, Job ID: ${SLURM_JOB_ID}"
-echo "Tengo ${SLURM_CPUS_ON_NODE} CPUs en el nodo $(hostname)"
-echo "Voy a dormir 10s para que me veas en la fila"
-sleep 10 
-```
-Al pedir un job interactivo, se reservaran los recursos y se iniciará sesión en un shell de alguno de los nodos de cómputo. 
-
-Ejemplo: Reservar un nodo de manera interactiva:
-
-```bash
-srun --pty -t 2:00 --mem=2G -p debug bash
-```
-El comando anterior asignará un CPU y 2GiB RAM por un periodo de 2 minutos. Durante ese tiempo podremos ejecutar comandos dentro de la shell de manera interactiva. Para salir de la sesión, deberemos ejecutar `exit` o presionar `Ctrl`+`d`.
+## Uso del nodo de acceso
 
 
-#### 1.2. `sbatch` - Enviar trabajos a la cola
+El nodo de acceso es compartido por todos los usuarios y, como su nombre lo indica, debe ser usado para el acceso al cluster y la ejecución de tareas administrativas como:
 
-El comando sbatch se utiliza para enviar un trabajo a la cola de SLURM. Este comando es ideal para trabajos que se ejecutan en segundo plano, como tareas largas o de alto rendimiento.
+- Compilación de código. 
+- Descarga de archivos. El nodo de acceso es el único nodo con salida a internet.
+- Creación de ambientes de trabajo (`virtualenv`) e instalación de paquetes de Python
+- Envío y manejo de jobs 
+- Transferencia de archivos 
+- Pequeñas tareas de pre y post-procesamiento que no demanden de uso alto de recursos en CPU y RAM.
 
-**Sintaxis básica:**
-
-```bash
-sbatch [opciones] [archivo_de_script]
-```
-
-Ejemplo: Enviar un trabajo de script:
-
-```
-sbatch mi_script.sb
-```
-
-
-#### 1.3. `squeue` - Ver el estado de los trabajos
-
-El comando squeue muestra los trabajos en ejecución y en espera en la cola de SLURM. Con ese comando nuede ver el estado de tus trabajos, qué partitición y nodos están utilizando, etc.
-
-**Sintaxis básica:**
-
-```bash
-squeue [opciones]
-```
-
-Ejemplo: Ver los trabajos que he enviado:
-
-```bash
-squeue --me
-```
-Con ello obtendré una salida parecida a:
-
-```text
-[alan.turing@khipu ~]$ squeue
-JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-1077     debug  CudaJob  alan.turing  R       0:02      1 n005
-```
-
-#### 1.4. `scancel` - Cancelar trabajos
-
-Este comando te permite cancelar trabajos en ejecución o en espera en la cola.
-
-**Sintaxis básica:**
-
-```bash
-scancel [opciones] [job_id]
-```
-
-Ejemplo: Cancelar un trabajo con un ID específico:
-
-```bash
-scancel 1077
-```
-
-#### 1.5. `scontrol` - Controlar y gestionar trabajos
-
-El comando scontrol le permite obtener información detallada sobre trabajos o recursos, y realizar operaciones de control (pausar, reanudar, etc.).
-
-**Sintaxis básica:**
-
-```bash
-scontrol [opciones] [comando]
-```
-
-Ejemplo: Ver el estado de un trabajo:
-
-```bash
-scontrol show job 1077
-```
-
-Con ello obtendré una salida parecida a:
-
-```text
-[alan.turing@khipu ~]$ scontrol show job 1077
-JobId=1077 JobName=CudaJob
-   UserId=alan.turing(1000) GroupId=alan.turing(1000) MCS_label=N/A
-   Priority=1683 Nice=0 Account=pregrado QOS=a-pregrado
-   JobState=COMPLETED Reason=None Dependency=(null)
-   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
-   RunTime=00:00:02 TimeLimit=00:10:00 TimeMin=N/A
-   SubmitTime=2024-11-06T02:41:48 EligibleTime=2024-11-06T02:41:48
-   AccrueTime=2024-11-06T02:41:48
-   StartTime=2024-11-06T02:41:48 EndTime=2024-11-06T02:41:50 Deadline=N/A
-   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2024-11-06T02:41:48 Scheduler=Main
-   Partition=debug AllocNode:Sid=khipu:2943597
-   ReqNodeList=(null) ExcNodeList=(null)
-   NodeList=n005
-   BatchHost=n005
-   NumNodes=1 NumCPUs=1 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
-   ReqTRES=cpu=1,mem=100M,node=1,billing=1
-   AllocTRES=cpu=1,mem=100M,node=1,billing=1
-   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
-   MinCPUsNode=1 MinMemoryCPU=100M MinTmpDiskNode=0
-   Features=(null) DelayBoot=00:00:00
-   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
-   Command=/home/alan.turing/gpu_job_shard.sh
-   WorkDir=/home/alan.turing
-   StdErr=/home/alan.turing/slurm-1077.out
-   StdIn=/dev/null
-   StdOut=/home/alan.turing/slurm-1077.out
-   Power=
-
-```
-### 1.6. `sinfo` - Ver información sobre los nodos y particiones
-
-Con sinfo puede obtener información sobre las particiones, su estado y nodos disponibles en el sistema.
-
-**Sintaxis básica:**
-
-```bash
-sinfo [opciones]
-```
-
-Ejemplo: Ver el estado de las particiones:
-
-```bash
-sinfo
-```
-Ejemplo: Ver el estado de las particiones y la razón de dicho estado:
-
-```bash
-sinfo -R
-```
+Todas las tareas que no se ajusten a las indicaciones dadas sobre el uso del nodo de acceso serán {--canceladas--} sin previo aviso y el usuario responsable será **sancionado** de acuerdo a nuestra [política de uso][politica-de-uso]. 
 
