@@ -1,15 +1,7 @@
----
-title: "Monitorear recursos"
-weight: 33
----
+!!! info "Recomendación General"
+    Asegúrese de reservar la cantidad de RAM y CPUs necesarios para la ejecución de su **job**. No reserve recursos que no necesita, ya que de hacerlo, perjudicará la ejecución de los demás usuarios del cluster. 
 
-<!-- https://uwaterloo.ca/math-faculty-computing-facility/services/service-catalogue-teaching-linux/monitoring-slurm-system-nodes-partitions-jobs -->
-
-## Recomendación General 💡
-
-Asegúrese de reservar la cantidad de RAM y CPUs necesarios para la ejecución de su **job**. No reserve recursos que no necesita, ya que de hacerlo, perjudicará la ejecución de los demás usuarios del cluster. 
-
-A continuación, se muestran algunos ejemplos de como medir el uso de CPU y RAM de su job a fin de que pueda refinar la reserva de recursos.  No olvide revisar la documentación sobre el [envío de jobs](/guia_de_usuario/jobs_schedulling/enviar_jobs/) a Slurm.
+A continuación se muestran algunos ejemplos de como medir el uso de CPU y RAM de su job a fin de que pueda refinar la reserva de recursos.  
 
 ### Jobs en ejecución
 
@@ -29,7 +21,7 @@ JOBID PARTITION     NAME     USER  ST       TIME  NODES NODELIST(REASON)
 En ella podemos notar que su job **bert-sar** se encuentra ejecutandose en el nodo `n003` de la parición `standard`. Con esa información crearemos el job interactivo.
 
 ```shell
-srun --pty -t 02:00 --mem=8G -p standard --nodelist=n003 bash
+srun --pty -t 02:00 --mem=1G -p standard --nodelist=n003 bash
 ```
 
 Una vez dentro del nodo de cómputo, ejecutaremos `ps` o `htop`.

@@ -23,10 +23,10 @@ nav:
     - Enviar jobs: 
       - guia-de-usuario/enviar-jobs/index.md
       - Comandos Básicos: guia-de-usuario/enviar-jobs/comandos-basicos.md
-      - Creación de Script: guia-de-usuario/enviar-jobs/creacion-script.md
-      - Parámetros de Slurm: guia-de-usuario/enviar-jobs/parametros.md
       - Particiones: guia-de-usuario/enviar-jobs/particiones.md
-      - Monitorear jobs: guia-de-usuario/enviar-jobs/monitorear.md
+      - Opciones de Slurm: guia-de-usuario/enviar-jobs/opciones-de-slurm.md
+      - Jobs interactivos: guia-de-usuario/enviar-jobs/jobs-interactivos.md
+      - Monitoreo de jobs: guia-de-usuario/enviar-jobs/monitorear.md
     - Software:
       - guia-de-usuario/software/index.md
       - Uso de software: guia-de-usuario/software/uso.md
