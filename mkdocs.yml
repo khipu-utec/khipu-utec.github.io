@@ -40,8 +40,6 @@ nav:
   - Tutoriales: 
     - Reinicio de Jobs: tutoriales/reinicio-job-pytorch.md
     - Apptainer: tutoriales/apptainer.md
-    - Jupyter [pip]: tutoriales/jupyter-pip.md
-    - Jupyter [conda]: tutoriales/jupyter-conda.md
   - Anuncios:
     - anuncios/index.md
   - Soporte: 
@@ -102,9 +100,11 @@ extra:
     - icon: fontawesome/solid/headset
       link: https://servicedesk.utec.edu.pe/
       name: Soporte
-
   tags:
     Python: python
+  analytics:
+    provider: google
+    property: !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
 
 plugins:
   - search
@@ -154,3 +154,4 @@ watch:
 extra_css:
   - stylesheets/extra.css
 copyright: Copyright &copy; 2025 Khipu - <a href="#__consent">Change cookie settings</a>
+
