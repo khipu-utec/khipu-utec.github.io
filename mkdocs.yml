@@ -38,6 +38,7 @@ nav:
       - Python: guia-de-usuario/ejemplos/python.md
       - Miniconda: guia-de-usuario/ejemplos/miniconda.md
   - Tutoriales: 
+    - Visual Studio Code: tutoriales/vs-code-remote.md
     - Reinicio de Jobs: tutoriales/reinicio-job-pytorch.md
     - Apptainer: tutoriales/apptainer.md
   - Anuncios:
