@@ -51,12 +51,12 @@ Permite el uso del cluster para todos aquellos miembros de UTEC y asociados que 
 
 ## ¿Cómo puedo saber mi tipo de cuenta?
 
-Una vez inicies sesión en Khipu, puedes ejecutar el commando:
+Una vez inicies sesión en Khipu, ejecuta el siguiente comando:
 
 ```
 myaccount
 ```
-Obtendrás el nombre de tu cuenta y sus límites. La salida en pantalla será similar a:
+Y obtendrás el nombre de tu cuenta y sus límites. La salida en pantalla será similar a:
 
 ```
 $ myaccount
