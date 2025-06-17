@@ -1,0 +1,45 @@
+[data-md-color-scheme="khipu"] {
+  --md-typeset-a-color: #2b4b63;
+  --md-banner-bg-color: #000000;
+  --md-footer-bg-color: #5ba4d5;
+  --md-accent-fg-color: #3e6f91;
+  --md-accent-fg-color--transparent: #2b4b63;
+
+  --md-button-bg-color: var(--md-accent-fg-color);
+  --md-button-bg-color--accent: var(--md-typeset-a-color);
+
+  --md-code-bg-color: hsla(194, 47%, 68%, 0.15);
+
+}
+
+.md-header__inner {
+  padding-top: 0.2rem;
+}
+
+.md-header__button.md-logo img, .md-header__button.md-logo svg {
+  height: 2.0rem;
+  width: auto;
+}
+
+.md-banner {
+  background-color: var(--md-banner-bg-color);
+}
+
+.md-header-nav__title, .md-header__title {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--md-accent-fg-color);
+  color: var(--md-default-bg-color);
+}
+
+.md-typeset h1 {
+  color: var(--md-default-fg-color);
+  font-weight: 500;
+}
+
+.md-typeset h2 {
+  font-weight: 500;
+}
