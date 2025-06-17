@@ -9,26 +9,20 @@ Permite el uso del cluster por los estudiantes de pregrado o posgrado, a pedido 
 ### Pregrado
 
 - **Particiones disponibles**: debug, debug-gpu, standard, gpu
-- **Cantidad máxima de recursos por usuario**: 12 cores, 36GB RAM y 4 shards GPU
-- **Cantidad máxima de recursos por job**: 1 shard GPU
-- **Cantidad máxima de jobs enviados:** 10
-- **Tiempo máximo de ejecución por job (Walltime):** 30 minutos
+- **Cantidad máxima de recursos por usuario**: 32 cores, 98GB RAM y 8 shards GPU
+- **Tiempo máximo de ejecución por job (Walltime):** 8 horas
 
 ### Posgrado
 
 - **Particiones disponibles**: debug, debug-gpu, standard, gpu
-- **Cantidad máxima de recursos por usuario**: 24 cores, 78GB RAM y 8 shards GPU
-- **Cantidad máxima de recursos por job**: 2 shards GPU
-- **Cantidad máxima de jobs enviados:** 10
-- **Tiempo máximo de ejecución por job (Walltime):** 2 horas
+- **Cantidad máxima de recursos por usuario**: 32 cores, 98GB RAM y 8 shards GPU
+- **Tiempo máximo de ejecución por job (Walltime):** 8 horas
 
 ### Docencia
 
 - **Particiones disponibles**: debug, debug-gpu, standard, gpu
-- **Cantidad máxima de recursos por usuario**: 24 cores, 78GB RAM y 8 shards GPU
-- **Cantidad máxima de recursos por job**: 2 shards GPU
-- **Cantidad máxima de jobs enviados:** 10
-- **Tiempo máximo de ejecución por job (Walltime):** 2 horas
+- **Cantidad máxima de recursos por usuario**: 32 cores, 98GB RAM y 32 shards GPU
+- **Tiempo máximo de ejecución por job (Walltime):** 8 horas
 
 ## Grupo Investigación
 
@@ -37,24 +31,46 @@ Permite el uso del cluster para todos aquellos miembros de UTEC y asociados que 
 #### Tesis
 
 - **Particiones disponibles**: debug, debug-gpu, standard, gpu, big-mem
-- **Cantidad máxima de recursos por usuario**: 48 cores, 96GB RAM y 8 shards GPU
-- **Cantidad máxima de recursos por job**: 4 shards GPU
-- **Cantidad máxima de jobs en ejecución:** 2
-- **Tiempo máximo de ejecución por job (Walltime):** 1 día
+- **Cantidad máxima de recursos por usuario**: 32 cores, 96GB RAM y 40 shards GPU
+- **Tiempo máximo de ejecución por job (Walltime):** 24 horas
 
 
 #### Investigación Nivel I
 
 - **Particiones disponibles**: debug, debug-gpu, standard, gpu, big-mem
-- **Cantidad máxima de recursos por usuario**: 64 cores, 128GB RAM y 8 shards GPU
-- **Cantidad máxima de recursos por job**: 8 shards GPU
-- **Cantidad máxima de jobs en ejecución:** 3
-- **Tiempo máximo de ejecución por job (Walltime):** 3 días
+- **Cantidad máxima de recursos por usuario**: 48 cores, 120GB RAM y 40 shards GPU
+- **Tiempo máximo de ejecución por job (Walltime):** 48 horas
+
 
 #### Investigación Nivel II
 
 - **Particiones disponibles**: debug, debug-gpu, standard, gpu, big-mem
-- **Cantidad máxima de recursos por usuario**: 64 cores, 256GB RAM y 16 shards GPU
-- **Cantidad máxima de recursos por job**: 16 shards GPU
-- **Cantidad máxima de jobs en ejecución:** 4
-- **Tiempo máximo de ejecución por job (Walltime):** 5 días
+- **Cantidad máxima de recursos por usuario**: 96 cores, 162GB RAM y 80 shards GPU
+- **Tiempo máximo de ejecución por job (Walltime):** 96 horas
+
+
+## ¿Cómo puedo saber mi tipo de cuenta?
+
+Una vez inicies sesión en Khipu, puedes ejecutar el commando:
+
+```
+myaccount
+```
+Obtendrás el nombre de tu cuenta y sus límites. La salida en pantalla será similar a:
+
+```
+$ myaccount
+---------------------------------------------------------
+Khipu account                                            
+---------------------------------------------------------
+User                 Account            Default          
+-------------------- ------------------ -----------------
+aturin               docencia           docencia           
+
+--------------------------------------------------------------
+Account Limits                                                
+--------------------------------------------------------------
+Account           Resources                       TimeLimit   
+----------------- ------------------------------- ------------
+a-docencia        cpu=32,gres/shard=32,mem=98G      08:00:00 
+```
