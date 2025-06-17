@@ -18,7 +18,7 @@ hide:
 
     [:octicons-arrow-right-24: Infraestructura](info/infraestructura.md)<br>
     [:octicons-arrow-right-24: Políticas de uso](info/politicas-de-uso.md)<br>
-    [:octicons-arrow-right-24: Grupos de cuentas](info/grupos-de-cuentas.md)
+    [:octicons-arrow-right-24: Grupos de cuentas](info/tipos-de-cuentas.md)
 
 -   **Primeros Pasos**
 
@@ -48,8 +48,8 @@ hide:
 
     ---
 
+    [:octicons-arrow-right-24: Visual Studio remoto](tutoriales/vs-code-remote.md)<br>
     [:octicons-arrow-right-24: Uso de Apptainer](tutoriales/apptainer.md)<br>
-    [:octicons-arrow-right-24: Uso de jupyter notebook/lab](tutoriales/jupyter-pip.md)<br>
     [:octicons-arrow-right-24: Reinicio de jobs en Pytorch](tutoriales/reinicio-job-pytorch.md)
 
 -   **Enlaces de Interés**
