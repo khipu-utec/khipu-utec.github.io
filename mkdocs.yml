@@ -41,6 +41,12 @@ nav:
     - Visual Studio Code: tutoriales/vs-code-remote.md
     - Reinicio de Jobs: tutoriales/reinicio-job-pytorch.md
     - Apptainer: tutoriales/apptainer.md
+  - Open Ondemand:
+    - ondemand/index.md
+    - Shell Interactiva: ondemand/shell.md
+    - Desktop Gráfico: ondemand/desktop.md
+    - Gestor de Tareas: ondemand/jobs.md
+    - Jupyter Lab: ondemand/jupyter.md
   - Anuncios:
     - anuncios/index.md
   - Soporte: 
