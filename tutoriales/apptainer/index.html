@@ -1,0 +1,1725 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentación de Khipu">
+      
+      
+        <meta name="author" content="Roosevelt Ubaldo Chavez">
+      
+      
+        <link rel="canonical" href="https://docs.khipu.utec.edu.pe/tutoriales/apptainer/">
+      
+      
+        <link rel="prev" href="../reinicio-job-pytorch/">
+      
+      
+        <link rel="next" href="../../ondemand/">
+      
+      
+      <link rel="icon" href="../../assets/logos/favicon-16x16.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>Apptainer - </title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+  
+  
+    
+    
+      
+    
+    
+  
+  
+  <style>.md-tag.md-tag--python{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20448%20512%22%3E%3C%21--%21%20Font%20Awesome%20Free%206.7.2%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20%28Icons%3A%20CC%20BY%204.0%2C%20Fonts%3A%20SIL%20OFL%201.1%2C%20Code%3A%20MIT%20License%29%20Copyright%202024%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M439.8%20200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0%2036.8-31.2%2067.8-66.8%2067.8H172.7c-29.2%200-53.4%2025-53.4%2054.3v101.8c0%2029%2025.2%2046%2053.4%2054.3%2033.8%209.9%2066.3%2011.7%20106.8%200%2026.9-7.8%2053.4-23.5%2053.4-54.3v-40.7H226.2v-13.6h160.2c31.1%200%2042.6-21.7%2053.4-54.2%2011.2-33.5%2010.7-65.7%200-108.6M286.2%20404c11.1%200%2020.1%209.1%2020.1%2020.3%200%2011.3-9%2020.4-20.1%2020.4-11%200-20.1-9.2-20.1-20.4.1-11.3%209.1-20.3%2020.1-20.3M167.8%20248.1h106.8c29.7%200%2053.4-24.5%2053.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2%208-53.4%2024.7-53.4%2055.6v40.7h106.9v13.6h-147c-31.1%200-58.3%2018.7-66.8%2054.2-9.8%2040.7-10.2%2066.1%200%20108.6%207.6%2031.6%2025.7%2054.2%2056.8%2054.2H101v-48.8c0-35.3%2030.5-66.4%2066.8-66.4m-6.7-142.6c-11.1%200-20.1-9.1-20.1-20.3.1-11.3%209-20.4%2020.1-20.4%2011%200%2020.1%209.2%2020.1%2020.4s-9%2020.3-20.1%2020.3%22/%3E%3C/svg%3E');}</style>
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config",""),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="khipu" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#apptainer" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="No mostrar esto de nuevo">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+             
+Bienvenidos a <strong>Khipu</strong>
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="" class="md-header__button md-logo" aria-label="" data-md-component="logo">
+      
+  <img src="../../assets/logos/logo.webp" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Apptainer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartir" aria-label="Compartir" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../info/" class="md-tabs__link">
+          
+  
+    
+  
+  Sobre Khipu
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../primeros-pasos/" class="md-tabs__link">
+          
+  
+    
+  
+  Primeros pasos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guia-de-usuario/enviar-jobs/" class="md-tabs__link">
+          
+  
+    
+  
+  Guía de Usuario
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../vs-code-remote/" class="md-tabs__link">
+          
+  
+    
+  
+  Tutoriales
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ondemand/" class="md-tabs__link">
+          
+  
+    
+  
+  Open Ondemand
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../anuncios/" class="md-tabs__link">
+          
+  
+    
+  
+  Anuncios
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../soporte/" class="md-tabs__link">
+          
+  
+    
+  
+  Soporte
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="" class="md-nav__button md-logo" aria-label="" data-md-component="logo">
+      
+  <img src="../../assets/logos/logo.webp" alt="logo">
+
+    </a>
+    
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../info/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sobre Khipu
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../primeros-pasos/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Primeros pasos
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../guia-de-usuario/enviar-jobs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Guía de Usuario
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tutoriales
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Tutoriales
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vs-code-remote/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Visual Studio Code
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reinicio-job-pytorch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reinicio de Jobs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Apptainer
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Apptainer
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview-of-the-apptainer-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of the Apptainer Interface
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#downloading-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downloading Images
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interacting-with-existing-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interacting with existing containers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interacting with existing containers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exec" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exec
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working with files
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../ondemand/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Open Ondemand
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../anuncios/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Anuncios
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../soporte/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Soporte
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview-of-the-apptainer-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of the Apptainer Interface
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#downloading-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downloading Images
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interacting-with-existing-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interacting with existing containers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interacting with existing containers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exec" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exec
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working with files
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="apptainer">Apptainer</h1>
+<p>Apptainer (formerly Singularity)  is an open-source, secure, portable and easy-to-use container platform that allows users to create and run containers that package up pieces of software in a way that is portable and reproducible. You can build a container for Apptainer on your laptop, and then run it on a different PC, workstation, <abbr title="High Performance Computing">HPC</abbr> cluster, cloud server, etc. Apptainer allows unprivileged users to use containers and prohibits privilege escalation within the container; users are the same inside and outside the container. Apptainer can import any container from OCI (Open Containers Initiative) registries. It means you can pull, run, and build from most containers on Docker Hub without changes. More information about Apptainer can be found on their <a href="https://apptainer.org/">official website</a>.</p>
+<h2 id="overview-of-the-apptainer-interface">Overview of the Apptainer Interface</h2>
+<p>Apptainer commands can be executed natively on the master or any compute node, without the need to load any additional module</p>
+<p>The <code>help</code> command gives an overview of Apptainer options and subcommands as follows:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>apptainer<span class="w"> </span><span class="nb">help</span>
+
+Linux<span class="w"> </span>container<span class="w"> </span>platform<span class="w"> </span>optimized<span class="w"> </span><span class="k">for</span><span class="w"> </span>High<span class="w"> </span>Performance<span class="w"> </span>Computing<span class="w"> </span><span class="o">(</span>HPC<span class="o">)</span><span class="w"> </span>and
+Enterprise<span class="w"> </span>Performance<span class="w"> </span>Computing<span class="w"> </span><span class="o">(</span>EPC<span class="o">)</span>
+
+Usage:
+<span class="w">  </span>apptainer<span class="w"> </span><span class="o">[</span>global<span class="w"> </span>options...<span class="o">]</span>
+
+Description:
+<span class="w">  </span>Apptainer<span class="w"> </span>containers<span class="w"> </span>provide<span class="w"> </span>an<span class="w"> </span>application<span class="w"> </span>virtualization<span class="w"> </span>layer<span class="w"> </span>enabling
+<span class="w">  </span>mobility<span class="w"> </span>of<span class="w"> </span>compute<span class="w"> </span>via<span class="w"> </span>both<span class="w"> </span>application<span class="w"> </span>and<span class="w"> </span>environment<span class="w"> </span>portability.<span class="w"> </span>With
+<span class="w">  </span>Apptainer<span class="w"> </span>one<span class="w"> </span>is<span class="w"> </span>capable<span class="w"> </span>of<span class="w"> </span>building<span class="w"> </span>a<span class="w"> </span>root<span class="w"> </span>file<span class="w"> </span>system<span class="w"> </span>that<span class="w"> </span>runs<span class="w"> </span>on<span class="w"> </span>any
+<span class="w">  </span>other<span class="w"> </span>Linux<span class="w"> </span>system<span class="w"> </span>where<span class="w"> </span>Apptainer<span class="w"> </span>is<span class="w"> </span>installed.
+
+Options:
+<span class="w">      </span>--build-config<span class="w">    </span>use<span class="w"> </span>configuration<span class="w"> </span>needed<span class="w"> </span><span class="k">for</span><span class="w"> </span>building<span class="w"> </span>containers
+<span class="w">  </span>-c,<span class="w"> </span>--config<span class="w"> </span>string<span class="w">   </span>specify<span class="w"> </span>a<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>root<span class="w"> </span>or
+<span class="w">                        </span>unprivileged<span class="w"> </span>installation<span class="w"> </span>only<span class="o">)</span><span class="w"> </span><span class="o">(</span>default
+<span class="w">                        </span><span class="s2">&quot;/etc/apptainer/apptainer.conf&quot;</span><span class="o">)</span>
+<span class="w">  </span>-d,<span class="w"> </span>--debug<span class="w">           </span>print<span class="w"> </span>debugging<span class="w"> </span>information<span class="w"> </span><span class="o">(</span>highest<span class="w"> </span>verbosity<span class="o">)</span>
+<span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">            </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>apptainer
+<span class="w">      </span>--nocolor<span class="w">         </span>print<span class="w"> </span>without<span class="w"> </span>color<span class="w"> </span>output<span class="w"> </span><span class="o">(</span>default<span class="w"> </span>False<span class="o">)</span>
+<span class="w">  </span>-q,<span class="w"> </span>--quiet<span class="w">           </span>suppress<span class="w"> </span>normal<span class="w"> </span>output
+<span class="w">  </span>-s,<span class="w"> </span>--silent<span class="w">          </span>only<span class="w"> </span>print<span class="w"> </span>errors
+<span class="w">  </span>-v,<span class="w"> </span>--verbose<span class="w">         </span>print<span class="w"> </span>additional<span class="w"> </span>information
+<span class="w">      </span>--version<span class="w">         </span>version<span class="w"> </span><span class="k">for</span><span class="w"> </span>apptainer
+
+Available<span class="w"> </span>Commands:
+<span class="w">  </span>build<span class="w">       </span>Build<span class="w"> </span>an<span class="w"> </span>Apptainer<span class="w"> </span>image
+<span class="w">  </span>cache<span class="w">       </span>Manage<span class="w"> </span>the<span class="w"> </span><span class="nb">local</span><span class="w"> </span>cache
+<span class="w">  </span>capability<span class="w">  </span>Manage<span class="w"> </span>Linux<span class="w"> </span>capabilities<span class="w"> </span><span class="k">for</span><span class="w"> </span>users<span class="w"> </span>and<span class="w"> </span>groups
+<span class="w">  </span>checkpoint<span class="w">  </span>Manage<span class="w"> </span>container<span class="w"> </span>checkpoint<span class="w"> </span>state<span class="w"> </span><span class="o">(</span>experimental<span class="o">)</span>
+<span class="w">  </span>completion<span class="w">  </span>Generate<span class="w"> </span>the<span class="w"> </span>autocompletion<span class="w"> </span>script<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>specified<span class="w"> </span>shell
+<span class="w">  </span>config<span class="w">      </span>Manage<span class="w"> </span>various<span class="w"> </span>apptainer<span class="w"> </span>configuration<span class="w"> </span><span class="o">(</span>root<span class="w"> </span>user<span class="w"> </span>only<span class="o">)</span>
+<span class="w">  </span>delete<span class="w">      </span>Deletes<span class="w"> </span>requested<span class="w"> </span>image<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>library
+<span class="w">  </span><span class="nb">exec</span><span class="w">        </span>Run<span class="w"> </span>a<span class="w"> </span><span class="nb">command</span><span class="w"> </span>within<span class="w"> </span>a<span class="w"> </span>container
+<span class="w">  </span><span class="nb">help</span><span class="w">        </span>Help<span class="w"> </span>about<span class="w"> </span>any<span class="w"> </span><span class="nb">command</span>
+<span class="w">  </span>inspect<span class="w">     </span>Show<span class="w"> </span>metadata<span class="w"> </span><span class="k">for</span><span class="w"> </span>an<span class="w"> </span>image
+<span class="w">  </span>instance<span class="w">    </span>Manage<span class="w"> </span>containers<span class="w"> </span>running<span class="w"> </span>as<span class="w"> </span>services
+<span class="w">  </span>key<span class="w">         </span>Manage<span class="w"> </span>OpenPGP<span class="w"> </span>keys
+<span class="w">  </span>keyserver<span class="w">   </span>Manage<span class="w"> </span>apptainer<span class="w"> </span>keyservers
+<span class="w">  </span>oci<span class="w">         </span>Manage<span class="w"> </span>OCI<span class="w"> </span>containers
+<span class="w">  </span>overlay<span class="w">     </span>Manage<span class="w"> </span>an<span class="w"> </span>EXT3<span class="w"> </span>writable<span class="w"> </span>overlay<span class="w"> </span>image
+<span class="w">  </span>plugin<span class="w">      </span>Manage<span class="w"> </span>Apptainer<span class="w"> </span>plugins
+<span class="w">  </span>pull<span class="w">        </span>Pull<span class="w"> </span>an<span class="w"> </span>image<span class="w"> </span>from<span class="w"> </span>a<span class="w"> </span>URI
+<span class="w">  </span>push<span class="w">        </span>Upload<span class="w"> </span>image<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>provided<span class="w"> </span>URI
+<span class="w">  </span>registry<span class="w">    </span>Manage<span class="w"> </span>authentication<span class="w"> </span>to<span class="w"> </span>OCI/Docker<span class="w"> </span>registries
+<span class="w">  </span>remote<span class="w">      </span>Manage<span class="w"> </span>apptainer<span class="w"> </span>remote<span class="w"> </span>endpoints
+<span class="w">  </span>run<span class="w">         </span>Run<span class="w"> </span>the<span class="w"> </span>user-defined<span class="w"> </span>default<span class="w"> </span><span class="nb">command</span><span class="w"> </span>within<span class="w"> </span>a<span class="w"> </span>container
+<span class="w">  </span>run-help<span class="w">    </span>Show<span class="w"> </span>the<span class="w"> </span>user-defined<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>an<span class="w"> </span>image
+<span class="w">  </span>search<span class="w">      </span>Search<span class="w"> </span>a<span class="w"> </span>Container<span class="w"> </span>Library<span class="w"> </span><span class="k">for</span><span class="w"> </span>images
+<span class="w">  </span>shell<span class="w">       </span>Run<span class="w"> </span>a<span class="w"> </span>shell<span class="w"> </span>within<span class="w"> </span>a<span class="w"> </span>container
+<span class="w">  </span>sif<span class="w">         </span>Manipulate<span class="w"> </span>Singularity<span class="w"> </span>Image<span class="w"> </span>Format<span class="w"> </span><span class="o">(</span>SIF<span class="o">)</span><span class="w"> </span>images
+<span class="w">  </span>sign<span class="w">        </span>Add<span class="w"> </span>digital<span class="w"> </span>signature<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>to<span class="w"> </span>an<span class="w"> </span>image
+<span class="w">  </span><span class="nb">test</span><span class="w">        </span>Run<span class="w"> </span>the<span class="w"> </span>user-defined<span class="w"> </span>tests<span class="w"> </span>within<span class="w"> </span>a<span class="w"> </span>container
+<span class="w">  </span>verify<span class="w">      </span>Verify<span class="w"> </span>digital<span class="w"> </span>signature<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>within<span class="w"> </span>an<span class="w"> </span>image
+<span class="w">  </span>version<span class="w">     </span>Show<span class="w"> </span>the<span class="w"> </span>version<span class="w"> </span><span class="k">for</span><span class="w"> </span>Apptainer
+
+Examples:
+<span class="w">  </span>$<span class="w"> </span>apptainer<span class="w"> </span><span class="nb">help</span><span class="w"> </span>&lt;command&gt;<span class="w"> </span><span class="o">[</span>&lt;subcommand&gt;<span class="o">]</span>
+<span class="w">  </span>$<span class="w"> </span>apptainer<span class="w"> </span><span class="nb">help</span><span class="w"> </span>build
+<span class="w">  </span>$<span class="w"> </span>apptainer<span class="w"> </span><span class="nb">help</span><span class="w"> </span>instance<span class="w"> </span>start
+
+For<span class="w"> </span>additional<span class="w"> </span><span class="nb">help</span><span class="w"> </span>or<span class="w"> </span>support,<span class="w"> </span>please<span class="w"> </span>visit<span class="w"> </span>https://apptainer.org/help/
+</code></pre></div>
+<h2 id="downloading-images">Downloading Images</h2>
+<ul>
+<li><strong>Container Images</strong> are executables that bundle together all necessary components for an application or an environment, like a template for containers.</li>
+<li><strong>Containers</strong> are the runtime instance of images.</li>
+</ul>
+<p>Pre-built containers can be obtained from a variety of sources like:</p>
+<ul>
+<li>Apptainer/Singularity Hub</li>
+<li><a href="https://hub.docker.com/">Docker Hub</a></li>
+<li><a href="https://catalog.ngc.nvidia.com/containers">NVIDIA NGC Catalog</a></li>
+<li>Other OCI registries</li>
+</ul>
+<p>You can use the <a href="https://apptainer.org/docs/user/main/cli/apptainer_pull.html#apptainer-pull">pull</a> and <a href="https://apptainer.org/docs/user/main/cli/apptainer_build.html#apptainer-build">build</a> commands to download images from an external resource like docker:</p>
+<div class="highlight"><pre><span></span><code><span class="o">(</span>master<span class="o">)</span>$<span class="w"> </span>apptainer<span class="w"> </span>pull<span class="w"> </span>docker://alpine
+<span class="o">(</span>master<span class="o">)</span>$<span class="w"> </span>apptainer<span class="w"> </span>build<span class="w"> </span>&lt;container-name&gt;.sif<span class="w"> </span>docker://alpine
+</code></pre></div>
+<p>Remember!! <pull> and <build> commands should be executed on the master node. The master node is the only one with internet access.</p>
+<h2 id="interacting-with-existing-containers">Interacting with existing containers</h2>
+<h3 id="run">Run</h3>
+<p>Once the image is downloaded, you are ready to run it.  As an example, we will download the <strong><em>lolcow</em></strong> container and run it.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Container downloading</span>
+<span class="o">(</span>master<span class="o">)</span>$<span class="w"> </span>apptainer<span class="w"> </span>pull<span class="w"> </span>docker://ghcr.io/apptainer/lolcow
+INFO:<span class="w">    </span>Converting<span class="w"> </span>OCI<span class="w"> </span>blobs<span class="w"> </span>to<span class="w"> </span>SIF<span class="w"> </span>format
+INFO:<span class="w">    </span>Starting<span class="w"> </span>build...
+Copying<span class="w"> </span>blob<span class="w"> </span>5ca731fc36c2<span class="w"> </span><span class="k">done</span><span class="w">   </span><span class="p">|</span><span class="w"> </span>
+Copying<span class="w"> </span>blob<span class="w"> </span>16ec32c2132b<span class="w"> </span><span class="k">done</span><span class="w">   </span><span class="p">|</span><span class="w"> </span>
+Copying<span class="w"> </span>config<span class="w"> </span>fd0daa4d89<span class="w"> </span><span class="k">done</span><span class="w">   </span><span class="p">|</span><span class="w"> </span>
+Writing<span class="w"> </span>manifest<span class="w"> </span>to<span class="w"> </span>image<span class="w"> </span>destination
+<span class="m">2025</span>/02/28<span class="w"> </span><span class="m">14</span>:04:53<span class="w">  </span>info<span class="w"> </span>unpack<span class="w"> </span>layer:<span class="w"> </span>sha256:16ec32c2132b43494832a05f2b02f7a822479f8250c173d0ab27b3de78b2f058
+<span class="m">2025</span>/02/28<span class="w"> </span><span class="m">14</span>:04:54<span class="w">  </span>info<span class="w"> </span>unpack<span class="w"> </span>layer:<span class="w"> </span>sha256:5ca731fc36c28789c5ddc3216563e8bfca2ab3ea10347e07554ebba1c953242e
+INFO:<span class="w">    </span>Creating<span class="w"> </span>SIF<span class="w"> </span>file...
+
+<span class="c1"># Container running in the system host</span>
+<span class="o">(</span>master<span class="o">)</span>$<span class="w"> </span>apptainer<span class="w"> </span>run<span class="w"> </span>lolcow_latest.sif<span class="w">      </span>
+<span class="w"> </span>______________________________
+&lt;<span class="w"> </span>Fri<span class="w"> </span>Feb<span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">14</span>:05:17<span class="w"> </span>-03<span class="w"> </span><span class="m">2025</span><span class="w"> </span>&gt;
+<span class="w"> </span>------------------------------
+<span class="w">        </span><span class="se">\ </span><span class="w">  </span>^__^
+<span class="w">         </span><span class="se">\ </span><span class="w"> </span><span class="o">(</span>oo<span class="o">)</span><span class="se">\_</span>______
+<span class="w">            </span><span class="o">(</span>__<span class="o">)</span><span class="se">\ </span><span class="w">      </span><span class="o">)</span><span class="se">\/\</span>
+<span class="w">                </span><span class="o">||</span>----w<span class="w"> </span><span class="p">|</span>
+<span class="w">                </span><span class="o">||</span><span class="w">     </span><span class="o">||</span>
+</code></pre></div>
+<p>As we can see the container was download as an Apptainer Image File <code>lolcow_latest.sif</code> . This file was executed with the command <code>apptainer run &lt;container-image-name&gt;.sif</code>  . However, <code>run</code> is not the only command to run and interact with container, we will discuss this in the next lines. </p>
+<h3 id="shell">Shell</h3>
+<p>You can create a new shell within your container and interact with it as though it were a virtual machine.</p>
+<div class="highlight"><pre><span></span><code><span class="o">(</span>master<span class="o">)</span>$<span class="w"> </span>apptainer<span class="w"> </span>shell<span class="w"> </span>lolcow_latest.sif<span class="w">   </span>
+Apptainer&gt;
+</code></pre></div>
+<p>The change in prompt ( from <code>(master)$</code> to <code>Apptainer&gt;</code>) indicates you are now inside the container. Additionally, your are the same user as you are in the host system and you can have access to the user home directory.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># I executing apptainer in the master node</span>
+Apptainer&gt;<span class="w"> </span>hostname
+khipu
+
+<span class="c1"># My user in the host system is aturing, in apptainer too</span>
+Apptainer&gt;<span class="w"> </span>whoami
+aturing
+
+<span class="c1"># I can access my home directory inside the container</span>
+Apptainer&gt;<span class="w"> </span><span class="nb">pwd</span>
+/home/aturing
+</code></pre></div>
+<p>Note: You can execute apptainer shell in the master node, but is highly recommended to do so using an interactive slurm job.  To do so, you must add the following command before your apptainer commands <code>srun --pty --mem=2G -p debug &lt;apptainer command&gt;</code>. </p>
+<p>Here is the above example using and interactive slurm job.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># I will execute an apptainer shell in a compute node</span>
+srun<span class="w"> </span>--pty<span class="w"> </span>--mem<span class="o">=</span>2G<span class="w"> </span>-p<span class="w"> </span>debug<span class="w"> </span>apptainer<span class="w"> </span>shell<span class="w"> </span>lolcow_latest.sif<span class="w"> </span>
+Apptainer&gt;<span class="w"> </span>hostname
+n003
+</code></pre></div>
+<p>Remember that <abbr title="cargas de trabajo">jobs</abbr> in the <code>debug</code> partition has a time limit of 30 minutes. For long time running <abbr title="cargas de trabajo">jobs</abbr>, you must execute it using an slurm batch job. We will explain this later. </p>
+<h3 id="exec">Exec</h3>
+<p>With <code>exec</code>command you can execute a custom command within a container. For example, to execute the <code>cowsay</code>program within the <code>lolcow_latest.sif</code> container:</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>rubaldo@khipu<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>lolcow_latest.sif<span class="w"> </span>cowsay<span class="w"> </span>Khipu
+<span class="w"> </span>_______
+&lt;<span class="w"> </span>Khipu<span class="w"> </span>&gt;
+<span class="w"> </span>-------
+<span class="w">        </span><span class="se">\ </span><span class="w">  </span>^__^
+<span class="w">         </span><span class="se">\ </span><span class="w"> </span><span class="o">(</span>oo<span class="o">)</span><span class="se">\_</span>______
+<span class="w">            </span><span class="o">(</span>__<span class="o">)</span><span class="se">\ </span><span class="w">      </span><span class="o">)</span><span class="se">\/\</span>
+<span class="w">                </span><span class="o">||</span>----w<span class="w"> </span><span class="p">|</span>
+<span class="w">                </span><span class="o">||</span><span class="w">     </span><span class="o">||</span>
+</code></pre></div>
+<h2 id="working-with-files">Working with files</h2>
+<p>Files on the system host are accesible from within the container.  </p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>rubaldo@khipu<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello from Khipu&quot;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$HOME</span>/testfile.txt
+<span class="o">[</span>rubaldo@khipu<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>lolcow_latest.sif<span class="w"> </span>cat<span class="w"> </span><span class="nv">$HOME</span>/testfile.txt
+Hello<span class="w"> </span>from<span class="w"> </span>Khipu
+</code></pre></div>
+<p>By default, Apptainer bind mounts <code>$HOME</code>, the current working directory, and additional system locations from the host into the container.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://apptainer.org/docs/user/main/quick_start.html">https://apptainer.org/docs/user/main/quick_start.html</a></li>
+</ul>
+<h1 id="building-custom-images">Building custom images</h1>
+<p>Apptainer allows users to build containers from a definition file (like Docker does with a dockerfile in ). Within this file you can add environment variables or install software dependencies to easily reproduce and share your containers.</p>
+<p>A definition file has a header and a body. The header determines the base container to begin with, and the body is further divided into sections that perform tasks such as software installation, environment setup, and copying files into the container from host system.  Further information of how to create the apptainer definition file can be found <a href="https://apptainer.org/docs/user/main/definition_files.html">here</a>.</p>
+<p>For example, we will create a <code>lolcow.def</code> file to define a container based on <strong>ubuntu</strong> and then install <strong>cowsay</strong> within. </p>
+<div class="highlight"><pre><span></span><code>BootStrap:<span class="w"> </span>docker
+From:<span class="w"> </span>ubuntu:24.04
+
+%post
+<span class="w">   </span>apt-get<span class="w"> </span>-y<span class="w"> </span>update
+<span class="w">   </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>cowsay<span class="w"> </span>lolcat
+
+%environment
+<span class="w">   </span><span class="nb">export</span><span class="w"> </span><span class="nv">LC_ALL</span><span class="o">=</span>C
+<span class="w">   </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/usr/games:<span class="nv">$PATH</span>
+
+%runscript
+<span class="w">   </span>date<span class="w"> </span><span class="p">|</span><span class="w"> </span>cowsay<span class="w"> </span><span class="p">|</span><span class="w"> </span>lolcat
+
+%labels
+<span class="w">   </span>Author<span class="w"> </span>Khipu
+<span class="w">   </span>Exec:<span class="w"> </span>apptainer
+</code></pre></div>
+<p>In this example the header tells Apptainer to start with a <code>ubuntu:24.04</code> base image from Docker Container Library. The <code>%post</code> section is executed in build time after the base image has been downloaded. In this example, we are using it to update the package library and install <code>cowsay</code> and <code>lolcat</code>.  The <code>%environment</code> section defines environment variables  for the container. The <code>%runscript</code> section is used to place actions for the container when it is executed (This commands will not be executed at build time). Finally, the <code>%label</code> section is used to place information about the container like the author, how to used it, examples, etc. </p>
+<p>To build the container from the above file we need to execute <code>apptainer build &lt;container-name&gt;.sif &lt;container-definition-file&gt;.def</code></p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>rubaldo@khipu<span class="w"> </span>apptainer<span class="o">]</span>$<span class="w"> </span>apptainer<span class="w"> </span>build<span class="w"> </span>lolcow.sif<span class="w"> </span>lolcow.def<span class="w"> </span>
+INFO:<span class="w">    </span>Starting<span class="w"> </span>build...
+...
+INFO:<span class="w">    </span>Adding<span class="w"> </span>labels
+INFO:<span class="w">    </span>Adding<span class="w"> </span>environment<span class="w"> </span>to<span class="w"> </span>container
+INFO:<span class="w">    </span>Adding<span class="w"> </span>runscript
+INFO:<span class="w">    </span>Creating<span class="w"> </span>SIF<span class="w"> </span>file...
+INFO:<span class="w">    </span>Build<span class="w"> </span>complete:<span class="w"> </span>lolcow.sif
+</code></pre></div>
+<p>Then, to run the container is enough to execute <code>apptainer run lolcow.sif</code> or <code>./lolcow.sif</code>.</p>
+<h1 id="gpu-support">GPU support</h1>
+<p>Apptainer has support for containers that use NVIDIA’s CUDA GPU computing framework. The following lines show how to create and run GPU containers in Khipu.</p>
+<h2 id="download-images">Download images</h2>
+<p>The first step as <a href="https://google.com">shown before</a> is to pull and build the container image. As an example we will <code>pull</code> a nvida-cuda12.8.0 image.</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>rubaldo@khipu<span class="o">]</span>$<span class="w"> </span>apptainer<span class="w"> </span>pull<span class="w"> </span>docker://nvidia/cuda:12.8.0-base-ubuntu20.04
+INFO:<span class="w">    </span>Converting<span class="w"> </span>OCI<span class="w"> </span>blobs<span class="w"> </span>to<span class="w"> </span>SIF<span class="w"> </span>format
+INFO:<span class="w">    </span>Starting<span class="w"> </span>build...
+...
+INFO:<span class="w">    </span>Creating<span class="w"> </span>SIF<span class="w"> </span>file...
+
+<span class="c1"># Or</span>
+<span class="o">[</span>rubaldo@khipu<span class="o">]</span>$<span class="w"> </span>apptainer<span class="w"> </span>build<span class="w"> </span>cuda12.sif<span class="w"> </span>docker://nvidia/cuda:12.8.0-base-ubuntu20.04
+</code></pre></div>
+<p>Remember: the <code>apptainer pull &lt;something&gt;</code> command only works on the master node. </p>
+<p>GPU nodes in Khipu are accesible through <abbr title="Simple Linux Utility for Resource Management">Slurm</abbr>. In the following lines I will show how to compile and run your cuda code using Apptainer and <abbr title="Simple Linux Utility for Resource Management">Slurm</abbr>.</p>
+<ul>
+<li>As a sample, use the <a href="http://gpu-info.cu">gpu-info.cu</a> code and compile it in the master node:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># Load cuda module</span>
+<span class="o">[</span>rubaldo@khipu<span class="o">]</span>$<span class="w"> </span>ml<span class="w"> </span>load<span class="w"> </span>cuda
+<span class="o">[</span>rubaldo@khipu<span class="o">]</span>$<span class="w"> </span>nvcc<span class="w"> </span>-o<span class="w"> </span>gpu_info<span class="w"> </span>gpu_info.cu
+</code></pre></div>
+<ul>
+<li>Then, to execute the code just run:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>rubaldo@khipu<span class="o">]</span>$<span class="w"> </span>srun<span class="w"> </span>--mem<span class="o">=</span>1G<span class="w"> </span>-p<span class="w"> </span>gpu<span class="w"> </span>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--nv<span class="w"> </span>cuda_12.8.0-base-ubuntu20.04.sif<span class="w"> </span>./gpu_info
+CUDA<span class="w"> </span>Device<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>Found:<span class="w"> </span><span class="m">1</span>
+Device<span class="w"> </span><span class="m">0</span><span class="w"> </span>Information:
+Name:<span class="w"> </span>Tesla<span class="w"> </span>T4
+Compute<span class="w"> </span>Capability:<span class="w"> </span><span class="m">7</span>.5
+Total<span class="w"> </span>Global<span class="w"> </span>Memory:<span class="w"> </span><span class="m">14915</span><span class="w"> </span>MB
+Shared<span class="w"> </span>Memory<span class="w"> </span>per<span class="w"> </span>Block:<span class="w"> </span><span class="m">48</span><span class="w"> </span>KB
+Registers<span class="w"> </span>per<span class="w"> </span>Block:<span class="w"> </span><span class="m">65536</span>
+Max<span class="w"> </span>Threads<span class="w"> </span>per<span class="w"> </span>Block:<span class="w"> </span><span class="m">1024</span>
+Max<span class="w"> </span>Block<span class="w"> </span>Dimensions:<span class="w"> </span><span class="o">(</span><span class="m">1024</span>,<span class="w"> </span><span class="m">1024</span>,<span class="w"> </span><span class="m">64</span><span class="o">)</span>
+Max<span class="w"> </span>Grid<span class="w"> </span>Dimensions:<span class="w"> </span><span class="o">(</span><span class="m">2147483647</span>,<span class="w"> </span><span class="m">65535</span>,<span class="w"> </span><span class="m">65535</span><span class="o">)</span>
+Clock<span class="w"> </span>Rate:<span class="w"> </span><span class="m">1590</span><span class="w"> </span>MHz
+Memory<span class="w"> </span>Clock<span class="w"> </span>Rate:<span class="w"> </span><span class="m">5001</span><span class="w"> </span>MHz
+Memory<span class="w"> </span>Bus<span class="w"> </span>Width:<span class="w"> </span><span class="m">256</span><span class="w"> </span>bits
+Total<span class="w"> </span>Constant<span class="w"> </span>Memory:<span class="w"> </span><span class="m">64</span><span class="w"> </span>KB
+Warp<span class="w"> </span>Size:<span class="w"> </span><span class="m">32</span>
+Multiprocessor<span class="w"> </span>Count:<span class="w"> </span><span class="m">40</span>
+</code></pre></div>
+<p>As you can see the <code>--nv</code> is passed to the <code>exec</code> command to setup the environment to use an NVIDIA GPU and basic CUDA libraries. Without this flag the cuda devices  and libraries can not be used. This flag is not required at build time. </p>
+<ul>
+<li>Is highly recommended to compile your cuda code in the master node, because cuda images with nvidia compiler within (<code>devel</code> images) are much bigger than <code>base</code> container images.</li>
+</ul>
+<p>As a prove of concept, we can compile the same code using Apptainer. In order to do so we need to pull a <code>devel</code> cuda image like <strong>nvidia/cuda:12.5.1-devel-ubuntu20.04</strong> (3.6 GB) which is more than 30 times bigger than a <code>base</code> image (~95 MB).</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>rubaldo@khipu<span class="o">]</span>$<span class="w"> </span>apptainer<span class="w"> </span>pull<span class="w"> </span>docker://nvidia/cuda:12.5.1-devel-ubuntu20.04
+INFO:<span class="w">    </span>Converting<span class="w"> </span>OCI<span class="w"> </span>blobs<span class="w"> </span>to<span class="w"> </span>SIF<span class="w"> </span>format
+INFO:<span class="w">    </span>Starting<span class="w"> </span>build...
+...
+INFO:<span class="w">    </span>Creating<span class="w"> </span>SIF<span class="w"> </span>file...
+</code></pre></div>
+<p>Then to compile the code, run:</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>rubaldo@khipu<span class="o">]</span>$<span class="w"> </span>srun<span class="w"> </span>--mem<span class="o">=</span>1G<span class="w"> </span>-p<span class="w"> </span>gpu<span class="w"> </span>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--nv<span class="w"> </span>cuda_12.5.1-devel-ubuntu20.04.sif<span class="w"> </span>nvcc<span class="w"> </span>-o<span class="w"> </span>gpu_info<span class="w"> </span>gpu_info.cu
+</code></pre></div>
+<p>And finally to execute the code:</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>rubaldo@khipu<span class="o">]</span>$<span class="w"> </span>srun<span class="w"> </span>--mem<span class="o">=</span>1G<span class="w"> </span>-p<span class="w"> </span>gpu<span class="w"> </span>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--nv<span class="w"> </span>cuda_12.5.1-devel-ubuntu20.04.sif<span class="w"> </span>./gpu_info
+CUDA<span class="w"> </span>Device<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>Found:<span class="w"> </span><span class="m">1</span>
+Device<span class="w"> </span><span class="m">0</span><span class="w"> </span>Information:
+Name:<span class="w"> </span>Tesla<span class="w"> </span>T4
+Compute<span class="w"> </span>Capability:<span class="w"> </span><span class="m">7</span>.5
+Total<span class="w"> </span>Global<span class="w"> </span>Memory:<span class="w"> </span><span class="m">14915</span><span class="w"> </span>MB
+Shared<span class="w"> </span>Memory<span class="w"> </span>per<span class="w"> </span>Block:<span class="w"> </span><span class="m">48</span><span class="w"> </span>KB
+Registers<span class="w"> </span>per<span class="w"> </span>Block:<span class="w"> </span><span class="m">65536</span>
+Max<span class="w"> </span>Threads<span class="w"> </span>per<span class="w"> </span>Block:<span class="w"> </span><span class="m">1024</span>
+Max<span class="w"> </span>Block<span class="w"> </span>Dimensions:<span class="w"> </span><span class="o">(</span><span class="m">1024</span>,<span class="w"> </span><span class="m">1024</span>,<span class="w"> </span><span class="m">64</span><span class="o">)</span>
+Max<span class="w"> </span>Grid<span class="w"> </span>Dimensions:<span class="w"> </span><span class="o">(</span><span class="m">2147483647</span>,<span class="w"> </span><span class="m">65535</span>,<span class="w"> </span><span class="m">65535</span><span class="o">)</span>
+Clock<span class="w"> </span>Rate:<span class="w"> </span><span class="m">1590</span><span class="w"> </span>MHz
+Memory<span class="w"> </span>Clock<span class="w"> </span>Rate:<span class="w"> </span><span class="m">5001</span><span class="w"> </span>MHz
+Memory<span class="w"> </span>Bus<span class="w"> </span>Width:<span class="w"> </span><span class="m">256</span><span class="w"> </span>bits
+Total<span class="w"> </span>Constant<span class="w"> </span>Memory:<span class="w"> </span><span class="m">64</span><span class="w"> </span>KB
+Warp<span class="w"> </span>Size:<span class="w"> </span><span class="m">32</span>
+Multiprocessor<span class="w"> </span>Count:<span class="w"> </span><span class="m">40</span>
+</code></pre></div>
+<p>To practice the above commands you can try to execute it all our gpu nodes adding the <code>--nodelist=&lt;name of a gpu node&gt;</code> to the srun command. To check the list of gpu nodes execute <code>sinfo</code>.</p>
+<p>In all the previuos examples the <code>srun</code> commands was used to launch the slurm <abbr title="cargas de trabajo">jobs</abbr>. This command is suitable for short time <abbr title="cargas de trabajo">jobs</abbr>, but if your job requires much more time you should launch your <abbr title="cargas de trabajo">jobs</abbr> in batch mode with <code>sbatch</code>.</p>
+<p>More information about Apptainer GPU support can be found <a href="https://apptainer.org/docs/user/latest/gpu.html">here</a>.</p>
+<h2 id="interactive-mode">Interactive mode</h2>
+<p>Sometimes you want to interact with your container like if you were on a shell. You can do this using an interactive slurm job. Interactive <abbr title="cargas de trabajo">jobs</abbr> should be executed on the <code>debug-gpu</code> partition and has a time limit of 30 minutes. Remember that container in apptainer are inmutable after build.</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>rubaldo@khipu<span class="o">]</span>$<span class="w"> </span>srun<span class="w"> </span>--pty<span class="w"> </span>-p<span class="w"> </span>debug-gpu<span class="w"> </span>apptainer<span class="w"> </span>run<span class="w"> </span>--nv<span class="w"> </span>cuda_12.8.0-base-ubuntu20.04.sif
+Apptainer&gt;
+
+<span class="c1"># To check the nvidia driver</span>
+Apptainer&gt;<span class="w"> </span>nvidia-smi
+Sun<span class="w"> </span>Mar<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">09</span>:20:22<span class="w"> </span><span class="m">2025</span><span class="w">       </span>
++-----------------------------------------------------------------------------------------+
+<span class="p">|</span><span class="w"> </span>NVIDIA-SMI<span class="w"> </span><span class="m">560</span>.35.03<span class="w">              </span>Driver<span class="w"> </span>Version:<span class="w"> </span><span class="m">560</span>.35.03<span class="w">      </span>CUDA<span class="w"> </span>Version:<span class="w"> </span><span class="m">12</span>.6<span class="w">     </span><span class="p">|</span>
+<span class="p">|</span>-----------------------------------------+------------------------+----------------------+
+<span class="p">|</span><span class="w"> </span>GPU<span class="w">  </span>Name<span class="w">                 </span>Persistence-M<span class="w"> </span><span class="p">|</span><span class="w"> </span>Bus-Id<span class="w">          </span>Disp.A<span class="w"> </span><span class="p">|</span><span class="w"> </span>Volatile<span class="w"> </span>Uncorr.<span class="w"> </span>ECC<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>Fan<span class="w">  </span>Temp<span class="w">   </span>Perf<span class="w">          </span>Pwr:Usage/Cap<span class="w"> </span><span class="p">|</span><span class="w">           </span>Memory-Usage<span class="w"> </span><span class="p">|</span><span class="w"> </span>GPU-Util<span class="w">  </span>Compute<span class="w"> </span>M.<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w">                                         </span><span class="p">|</span><span class="w">                        </span><span class="p">|</span><span class="w">               </span>MIG<span class="w"> </span>M.<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="o">=========================================</span>+<span class="o">========================</span>+<span class="o">======================</span><span class="p">|</span>
+<span class="p">|</span><span class="w">   </span><span class="m">0</span><span class="w">  </span>Tesla<span class="w"> </span>T4<span class="w">                       </span>On<span class="w">  </span><span class="p">|</span><span class="w">   </span><span class="m">00000000</span>:37:00.0<span class="w"> </span>Off<span class="w"> </span><span class="p">|</span><span class="w">                    </span><span class="m">0</span><span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>N/A<span class="w">   </span>78C<span class="w">    </span>P0<span class="w">             </span>51W<span class="w"> </span>/<span class="w">   </span>70W<span class="w"> </span><span class="p">|</span><span class="w">   </span>13831MiB<span class="w"> </span>/<span class="w">  </span>15360MiB<span class="w"> </span><span class="p">|</span><span class="w">     </span><span class="m">55</span>%<span class="w">      </span>Default<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w">                                         </span><span class="p">|</span><span class="w">                        </span><span class="p">|</span><span class="w">                  </span>N/A<span class="w"> </span><span class="p">|</span>
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+<span class="p">|</span><span class="w"> </span>Processes:<span class="w">                                                                              </span><span class="p">|</span>
+<span class="p">|</span><span class="w">  </span>GPU<span class="w">   </span>GI<span class="w">   </span>CI<span class="w">        </span>PID<span class="w">   </span>Type<span class="w">   </span>Process<span class="w"> </span>name<span class="w">                              </span>GPU<span class="w"> </span>Memory<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w">        </span>ID<span class="w">   </span>ID<span class="w">                                                               </span>Usage<span class="w">      </span><span class="p">|</span>
+...
+</code></pre></div>
+<h2 id="apptainer-cache">Apptainer Cache</h2>
+<p>When you generate a SIF image from remote sources, Apptainer will cache the image. By default, the cache folder will be created in <code>HOME</code> environmental variable (<code>$HOME/.apptainer/cache</code>). The <code>apptainer cache</code> command allows you to list and clean up your cache.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># List your cache</span>
+<span class="o">[</span>rubaldo@khipu<span class="o">]</span>$<span class="w"> </span>apptainer<span class="w"> </span>cache<span class="w"> </span>list
+There<span class="w"> </span>are<span class="w"> </span><span class="m">4</span><span class="w"> </span>container<span class="w"> </span>file<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>using<span class="w"> </span><span class="m">7</span>.31<span class="w"> </span>GiB<span class="w"> </span>and<span class="w"> </span><span class="m">88</span><span class="w"> </span>oci<span class="w"> </span>blob<span class="w"> </span>file<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>using<span class="w"> </span><span class="m">13</span>.18<span class="w"> </span>GiB<span class="w"> </span>of<span class="w"> </span>space
+Total<span class="w"> </span>space<span class="w"> </span>used:<span class="w"> </span><span class="m">20</span>.49<span class="w"> </span>GiB
+
+<span class="c1"># The same command with details</span>
+apptainer<span class="w"> </span>cache<span class="w"> </span>list<span class="w"> </span>-v
+NAME<span class="w">                     </span>DATE<span class="w"> </span>CREATED<span class="w">           </span>SIZE<span class="w">             </span>TYPE
+03bb9eb021f579ed871d5f<span class="w">   </span><span class="m">2025</span>-03-02<span class="w"> </span><span class="m">07</span>:52:09<span class="w">    </span><span class="m">4</span>.41<span class="w"> </span>MiB<span class="w">         </span>blob
+093f9cb4ed5900be5b069a<span class="w">   </span><span class="m">2025</span>-02-08<span class="w"> </span><span class="m">14</span>:25:21<span class="w">    </span><span class="m">0</span>.18<span class="w"> </span>KiB<span class="w">         </span>blob
+...
+
+There<span class="w"> </span>are<span class="w"> </span><span class="m">4</span><span class="w"> </span>container<span class="w"> </span>file<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>using<span class="w"> </span><span class="m">7</span>.31<span class="w"> </span>GiB<span class="w"> </span>and<span class="w"> </span><span class="m">88</span><span class="w"> </span>oci<span class="w"> </span>blob<span class="w"> </span>file<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>using<span class="w"> </span><span class="m">13</span>.18<span class="w"> </span>GiB<span class="w"> </span>of<span class="w"> </span>space
+Total<span class="w"> </span>space<span class="w"> </span>used:<span class="w"> </span><span class="m">20</span>.49<span class="w"> </span>GiB
+
+<span class="c1"># Clean you cache</span>
+apptainer<span class="w"> </span>cache<span class="w"> </span>clean
+
+<span class="c1"># Clean you cache files older than 15 days</span>
+apptainer<span class="w"> </span>cache<span class="w"> </span>clean<span class="w"> </span>--days<span class="w"> </span><span class="m">15</span>
+</code></pre></div>
+<p>Try to regularly free up your apptainer cache.</p>
+<h2 id="slurm-submission-script"><strong>SLURM Submission Script</strong></h2>
+<p>You can launch your Apptainer <abbr title="cargas de trabajo">jobs</abbr> in batch mode with an slurm script. It is highly recommended when your job will take a lot of time executing. As an example, the <code>lolcow_latest.sif</code>, container of the first example, will be run using a <code>lolcow.slurm</code> submission file.</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1">## Slurm Directives</span>
+<span class="c1">#SBATCH --job-name=apptainer_lolcow</span>
+<span class="c1">#SBATCH --output=apptainer_lolcow-%j.out</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --cpus-per-task=1</span>
+<span class="c1">#SBATCH --mem-per-cpu=1G</span>
+<span class="c1">#SBATCH -p debug</span>
+
+<span class="c1">## Load modules, if needed</span>
+
+<span class="c1">## Place to the directory where you container is, for example $HOME</span>
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>
+
+<span class="c1">## Run the program using use &#39;srun&#39;.</span>
+srun<span class="w"> </span>apptainer<span class="w"> </span>run<span class="w"> </span>lolcow_latest.sif<span class="w"> </span>
+</code></pre></div>
+<p>In the above script, <strong><code>1 CPU</code></strong> with <strong><code>1GB RAM</code></strong> per CPU was requested in the <code>debug</code> partition for the task. This container will run only one (<code>--ntasks=1</code>), if you want to execute it more times try changing the value of <code>--ntasks=</code>, but remember that this only works when your commands is executed with the <code>srun</code> command.</p>
+<p>To submit this script, just run:</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>rubaldo@khipu<span class="o">]</span>$<span class="w"> </span>sbatch<span class="w"> </span>lolcow.slurm
+<span class="c1"># When the job finish, check you output with cat</span>
+<span class="o">[</span>rubaldo@khipu<span class="o">]</span>$<span class="w"> </span>cat<span class="w"> </span>apptainer_lolcow-4377.out<span class="w"> </span>
+<span class="w"> </span>_____________________________
+&lt;<span class="w"> </span>Mon<span class="w"> </span>Mar<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">11</span>:36:49<span class="w"> </span>-05<span class="w"> </span><span class="m">2025</span><span class="w"> </span>&gt;
+<span class="w"> </span>-----------------------------
+<span class="w">        </span><span class="se">\ </span><span class="w">  </span>^__^
+<span class="w">         </span><span class="se">\ </span><span class="w"> </span><span class="o">(</span>oo<span class="o">)</span><span class="se">\_</span>______
+<span class="w">            </span><span class="o">(</span>__<span class="o">)</span><span class="se">\ </span><span class="w">      </span><span class="o">)</span><span class="se">\/\</span>
+<span class="w">                </span><span class="o">||</span>----w<span class="w"> </span><span class="p">|</span>
+<span class="w">                </span><span class="o">||</span><span class="w">     </span><span class="o">||</span>
+</code></pre></div>
+<p>For NVIDIA GPU <abbr title="cargas de trabajo">jobs</abbr>, in this case using the <code>cuda_12.8.0-base-ubuntu20.04.sif</code> image, the <abbr title="Simple Linux Utility for Resource Management">Slurm</abbr> script <code>gpu_info.slurm</code> should be:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1">## Slurm Directives</span>
+<span class="c1">#SBATCH --job-name=apptainer_gpu_info</span>
+<span class="c1">#SBATCH --output=apptainer_gpu_info-%j.out</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --cpus-per-task=1</span>
+<span class="c1">#SBATCH --mem-per-cpu=1G</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+<span class="c1">#SBATCH -p debug-gpu</span>
+
+<span class="c1">## Load modules, if needed</span>
+
+<span class="c1">## Place to the directory where you container is, for example $HOME</span>
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>/apptainer
+
+<span class="c1">## Run the program using use &#39;srun&#39;.</span>
+srun<span class="w"> </span>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--nv<span class="w"> </span>cuda_12.8.0-base-ubuntu20.04.sif<span class="w"> </span>./gpu_info
+</code></pre></div>
+<p>Then, to submit this script, just run:</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>rubaldo@khipu<span class="o">]</span>$<span class="w"> </span>sbatch<span class="w"> </span>gpu_info.slurm
+<span class="c1"># Wait until the job finish. Then you will have an output like this:</span>
+<span class="o">[</span>rubaldo@khipu<span class="o">]</span>$<span class="w"> </span>cat<span class="w"> </span>apptainer_gpu_info-4576.out<span class="w"> </span>
+CUDA<span class="w"> </span>Device<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>Found:<span class="w"> </span><span class="m">1</span>
+Device<span class="w"> </span><span class="m">0</span><span class="w"> </span>Information:
+Name:<span class="w"> </span>Tesla<span class="w"> </span>T4
+Compute<span class="w"> </span>Capability:<span class="w"> </span><span class="m">7</span>.5
+Total<span class="w"> </span>Global<span class="w"> </span>Memory:<span class="w"> </span><span class="m">14915</span><span class="w"> </span>MB
+Shared<span class="w"> </span>Memory<span class="w"> </span>per<span class="w"> </span>Block:<span class="w"> </span><span class="m">48</span><span class="w"> </span>KB
+Registers<span class="w"> </span>per<span class="w"> </span>Block:<span class="w"> </span><span class="m">65536</span>
+Max<span class="w"> </span>Threads<span class="w"> </span>per<span class="w"> </span>Block:<span class="w"> </span><span class="m">1024</span>
+Max<span class="w"> </span>Block<span class="w"> </span>Dimensions:<span class="w"> </span><span class="o">(</span><span class="m">1024</span>,<span class="w"> </span><span class="m">1024</span>,<span class="w"> </span><span class="m">64</span><span class="o">)</span>
+Max<span class="w"> </span>Grid<span class="w"> </span>Dimensions:<span class="w"> </span><span class="o">(</span><span class="m">2147483647</span>,<span class="w"> </span><span class="m">65535</span>,<span class="w"> </span><span class="m">65535</span><span class="o">)</span>
+Clock<span class="w"> </span>Rate:<span class="w"> </span><span class="m">1590</span><span class="w"> </span>MHz
+Memory<span class="w"> </span>Clock<span class="w"> </span>Rate:<span class="w"> </span><span class="m">5001</span><span class="w"> </span>MHz
+Memory<span class="w"> </span>Bus<span class="w"> </span>Width:<span class="w"> </span><span class="m">256</span><span class="w"> </span>bits
+Total<span class="w"> </span>Constant<span class="w"> </span>Memory:<span class="w"> </span><span class="m">64</span><span class="w"> </span>KB
+Warp<span class="w"> </span>Size:<span class="w"> </span><span class="m">32</span>
+Multiprocessor<span class="w"> </span>Count:<span class="w"> </span><span class="m">40</span>
+</code></pre></div>
+<p>If you want to get notified when your job fails or finish, don’t forget to add the following lines to you slurm script.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#SBATCH --mail-type=fail        # send email when job begins</span>
+<span class="c1">#SBATCH --mail-type=end          # send email when job ends</span>
+<span class="c1">#SBATCH --mail-user=&lt;your email&gt;</span>
+</code></pre></div>
+<p>References:</p>
+<p><a href="https://hpc.nmsu.edu/discovery/software/apptainer/using-containers/">https://hpc.nmsu.edu/discovery/software/apptainer/using-containers/</a></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="6 de enero de 2026 15:52:07">6 de enero de 2026</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Creado">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="6 de enero de 2026 15:52:07">6 de enero de 2026</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Khipu - <a href="#__consent">Change cookie settings</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://web.khipu.utec.edu.pe/" target="_blank" rel="noopener" title="Página Web" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.4c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64h185.3c2.2 20.4 3.3 41.8 3.3 64m28.8-64h123.1c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64m112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6 78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7 10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5 11.6 26 20.9 58.2 27 94.7m-209 0H18.6c30-74.1 93.6-130.9 172-151.6-25.5 34.2-45.3 87.7-55.3 151.6M8.1 192h123.1c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64m186.6 254.6c-11.6-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.6-22.2 40.7-33.5 51.5-11.2 10.7-20.5 13.9-27.8 13.9s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6-78.4-20.7-142-77.5-172-151.6zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6 25.5-34.2 45.2-87.7 55.3-151.6h116.7z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/khipu-utec" target="_blank" rel="noopener" title="Organización en GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:khipu@utec.edu.pe" target="_blank" rel="noopener" title="Correo electrónico" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://servicedesk.utec.edu.pe/" target="_blank" rel="noopener" title="Soporte" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M256 48C141.1 48 48 141.1 48 256v40c0 13.3-10.7 24-24 24S0 309.3 0 296v-40C0 114.6 114.6 0 256 0s256 114.6 256 256v144.1c0 48.6-39.4 88-88.1 88l-110.3-.1c-8.3 14.3-23.8 24-41.6 24h-32c-26.5 0-48-21.5-48-48s21.5-48 48-48h32c17.8 0 33.3 9.7 41.6 24l110.4.1c22.1 0 40-17.9 40-40V256c0-114.9-93.1-208-208-208M144 208h16c17.7 0 32 14.3 32 32v112c0 17.7-14.3 32-32 32h-16c-35.3 0-64-28.7-64-64v-48c0-35.3 28.7-64 64-64m224 0c35.3 0 64 28.7 64 64v48c0 35.3-28.7 64-64 64h-16c-17.7 0-32-14.3-32-32V240c0-17.7 14.3-32 32-32z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.tabs.sticky", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest", "search.highlight", "search.share", "announce.dismiss"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": {"Python": "python"}, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
