@@ -71,6 +71,6 @@ site*/
 old/
 
 docs/assets/logos/logo*.png
-docs/assets/images/*.png
+#docs/assets/images/*.png
 encryptcontent.cache
 .env
