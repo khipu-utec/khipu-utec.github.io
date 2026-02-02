@@ -11,6 +11,9 @@ Enlace de Login: [ood.khipu.utec.edu.pe](https://ood.khipu.utec.edu.pe)
 
 Los usuarios de Khipu pueden acceder a los servicios de Open Ondemand a través del [formulario de login](https://ood.khipu.utec.edu.pe) ingresando sus credenciales de acceso a Khipu (las mismas que utiliza para conexiones por ssh).
 
+!!! warning "Importante"
+	Antes de poder acceder por la web, es necesario ingresar al menos una vez por `ssh`, ejecutando el comando `ssh <mi-usuario>@khipu.utec.edu.pe` e ingresando su contraseña. Esto sucede porque Khipu crea la carpeta de cada usuario en `/home` cuando este accede por primera vez a través de `ssh`. Si intena ingresar por la web sin haber hecho esto previamente, obtendrá el mensaje `"Home directory not found"`.
+
 ## Servicios Disponibles
 
 - [Gestor de Tareas](/ondemand/jobs)
