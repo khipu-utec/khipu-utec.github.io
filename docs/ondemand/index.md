@@ -11,7 +11,7 @@ Enlace de Login: [ood.khipu.utec.edu.pe](https://ood.khipu.utec.edu.pe)
 
 Los usuarios de Khipu pueden acceder a los servicios de Open Ondemand a través del [formulario de login](https://ood.khipu.utec.edu.pe) ingresando sus credenciales de acceso a Khipu (las mismas que utiliza para conexiones por ssh).
 
-!!! warning "Importante"
+!!! warning "Antes de acceder"
 	Antes de poder acceder por la web, es necesario ingresar al menos una vez por `ssh`, ejecutando el comando `ssh <mi-usuario>@khipu.utec.edu.pe` e ingresando su contraseña. Esto sucede porque Khipu crea la carpeta de cada usuario en `/home` cuando este accede por primera vez a través de `ssh`. Si intena ingresar por la web sin haber hecho esto previamente, obtendrá el mensaje `"Home directory not found"`.
 
 ## Servicios Disponibles
@@ -21,3 +21,6 @@ Los usuarios de Khipu pueden acceder a los servicios de Open Ondemand a través 
 	- [Shell Interactiva](/ondemand/shell)
 	- [Desktop Gráfico](/ondemand/desktop)
 	- [Jupyter Lab](/ondemand/jupyter)
+
+!!! warning "Límites de Recursos"
+	Cabe resaltar que los límites de recursos que se pueden reservar para las sesiones de aplicaciones interactivas son los mismos que aquellos impuestos por SLURM (ya que por debajo SLURM se encarga de crear los *jobs*). Esto quiere decir que si intento crear una sesión interactiva con más recursos de los que tengo asignados, mi sesión nunca se creará dado que se quedará encolada. Un usuario puede ver los recursos que tiene disponibles con el comando `myaccount`.

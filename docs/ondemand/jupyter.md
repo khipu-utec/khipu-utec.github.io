@@ -19,9 +19,12 @@ La creación de sesiones de Jupyter funciona de manera similar a la creación de
 - Cantidad de Memoria (GB)
 - Cantidad de Shards de GPU (sólo para particiones `debug-gpu`, `gpu`, `all`)
 
+!!! note "Espacio de Trabajo"
+	Por defecto Jupyter siempre tomará el directorio `/home/<mi-usuario>` como espacio de trabajo. Esto quiere decir que cualquier trabajo realizado será persistente y se almacenará en dicha carpeta.
+
 ## Ambientes Virtuales
 
-Jupyter permite ejecutar *notebooks* con diferentes *kernels*. Una práctica común es utilizar ambientes virtuales (`venv`) de Python para separar los *kernels* y las dependencias de software que tienen instaladas. En nuestra instalación de Jupyter, los usuarios tienen acceso a ambientes virtuales globales (compartidos) y personales (privados).
+Jupyter permite ejecutar *notebooks* con diferentes *kernels*. Una práctica común es utilizar ambientes virtuales (`venv`, `conda`) para separar los *kernels* y las dependencias de software que tienen instaladas. En nuestra instalación de Jupyter, los usuarios tienen acceso a ambientes virtuales globales (compartidos) y personales (privados).
 
 ### Ambientes virtuales globales
 
@@ -29,14 +32,19 @@ Con el fin de proveer paquetes de software comúnmente utilizados para distintos
 
 | **Ambiente Virtual** | **Descripción**                                                                        | **Paquetes de Software**                                                                                                                                                                                                                                   |
 |----------------------|----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| General HPC          | Herramientas básicas para uso general en HPC, Ciencia de datos, GPU e Inteligencia Artificial | IPykernel v7.1.0, Numpy v2.3.5, Pandas v2.3.3, MatplotLib v3.10.8, Seaborn v0.13.2, Awkward v2.8.11, Dask v2025.12.0, CuPy (CUDA 12x) v13.6.0, Scipy v1.16.3, Scikit-Learn v1.8.0, Keras v3.12.0, PyTorch v2.9.1, TorchVision v0.24.1, TensorFlow v2.20.0  |
+| General HPC          | Herramientas básicas para uso general en HPC, Ciencia de datos, GPU e Inteligencia Artificial, gestionado con `venv + pip` | IPykernel v7.1.0, Numpy v2.3.5, Pandas v2.3.3, MatplotLib v3.10.8, Seaborn v0.13.2, Awkward v2.8.11, Dask v2025.12.0, CuPy (CUDA 12x) v13.6.0, Scipy v1.16.3, Scikit-Learn v1.8.0, Keras v3.12.0, PyTorch v2.9.1, TorchVision v0.24.1, TensorFlow v2.20.0  |
+| Conda General HPC    | Herramientas básicas para uso general en HPC, Ciencia de datos, GPU e Inteligencia Artificial, gestionado con Miniconda | IPykernel v7.1.0, Numpy v2.3.5, Pandas v2.3.3, MatplotLib v3.10.8, Seaborn v0.13.2, Awkward v2.8.11, Dask v2025.12.0, CuPy (CUDA 12x) v13.6.0, Scipy v1.16.3, Scikit-Learn v1.8.0, Keras v3.12.0, PyTorch v2.9.1, TorchVision v0.24.1, TensorFlow v2.20.0  |
 
 ### Ambientes virtuales personales
 
-Los usuarios de Khipu son libres de instalar ambientes virtuales personales en sus entornos. De esta manera pueden instalar los paquetes de software que necesiten y utilizarlos en Jupyter. Los comandos para crear un ambiente virtual e instalar su *kernel* de Jupyter en su entorno son los siguientes:
+Los usuarios de Khipu son libres de instalar ambientes virtuales personales en sus entornos. De esta manera pueden instalar los paquetes de software que necesiten y utilizarlos en Jupyter.
+
+#### Utilizando `venv + pip`
+
+Los comandos para crear un ambiente virtual e instalar su *kernel* de Jupyter en su entorno utilizando `venv + pip` son los siguientes:
 
 ```shell
-ml python3/3.13.2
+module load python3/3.13.2
 python3 -m venv <my-env>
 ```
 
@@ -58,3 +66,20 @@ Una vez instalado el *kernel*, este nos aparecerá como opción al seleccionar u
 	Una vez creado su ambiente, el usuario puede instalar paquetes de software utilizando `pip`. Una vez instalado el *kernel* en su entorno, este se encontrará disponible en Jupyter. El usuario puede instalar paquetes de software en su ambiente virtual antes o después de que instaló su *kernel*.
 
 Para más información sobre el manejo de ambientes virtuales, ver: [https://docs.python.org/3/library/venv.html](https://docs.python.org/3/library/venv.html)
+
+#### Utilizando Miniconda
+
+Los comandos para crear un ambiente virtual e instalar su *kernel* de Jupyter en su entorno utilizando `miniconda` son los siguientes:
+
+```shell
+module load miniconda
+conda create --name <my-env>
+```
+
+Similarmente debemos instalar el kernel y habilitar su uso en sesiones de Jupyter. Esto lo hacemos ejecutando:
+
+```shell
+conda activate <my-env>
+conda install -y ipykernel
+python3 -m ipykernel install --user --name <my-env> --display-name "Test Env"
+```
