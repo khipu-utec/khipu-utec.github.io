@@ -202,7 +202,7 @@ References:
 
 - [https://apptainer.org/docs/user/main/quick_start.html](https://apptainer.org/docs/user/main/quick_start.html)
 
-# Building custom images
+## Building custom images
 
 Apptainer allows users to build containers from a definition file (like Docker does with a dockerfile in ). Within this file you can add environment variables or install software dependencies to easily reproduce and share your containers.
 
@@ -249,11 +249,11 @@ INFO:    Build complete: lolcow.sif
 
 Then, to run the container is enough to execute `apptainer run lolcow.sif` or `./lolcow.sif`.
 
-# GPU support
+## GPU support
 
 Apptainer has support for containers that use NVIDIA’s CUDA GPU computing framework. The following lines show how to create and run GPU containers in Khipu.
 
-## Download images
+### Download images
 
 The first step as [shown before](https://google.com) is to pull and build the container image. As an example we will `pull` a nvida-cuda12.8.0 image.
 
