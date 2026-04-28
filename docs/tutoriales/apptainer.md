@@ -1,12 +1,12 @@
 # Apptainer
 
-Apptainer (formerly Singularity)  is an open-source, secure, portable and easy-to-use container platform that allows users to create and run containers that package up pieces of software in a way that is portable and reproducible. You can build a container for Apptainer on your laptop, and then run it on a different PC, workstation, HPC cluster, cloud server, etc. Apptainer allows unprivileged users to use containers and prohibits privilege escalation within the container; users are the same inside and outside the container. Apptainer can import any container from OCI (Open Containers Initiative) registries. It means you can pull, run, and build from most containers on Docker Hub without changes. More information about Apptainer can be found on their [official website](https://apptainer.org/).
+Apptainer (anteriormente conocido como Singularity) es una plataforma de contenedores de código abierto, segura, portable y fácil de usar que permite a los usuarios crear y ejecutar contenedores que empaquetan software de forma portable y reproducible. Puedes construir un contenedor para Apptainer en tu laptop y luego ejecutarlo en otra PC, estación de trabajo, clúster HPC, servidor en la nube, etc. Apptainer permite a usuarios sin privilegios usar contenedores y prohíbe la escalada de privilegios dentro del contenedor; los usuarios son los mismos dentro y fuera del contenedor. Apptainer puede importar cualquier contenedor de registros OCI (Open Containers Initiative), lo que significa que puedes descargar, ejecutar y construir desde la mayoría de los contenedores en Docker Hub sin modificaciones. Más información sobre Apptainer se puede encontrar en su [sitio web oficial](https://apptainer.org/).
 
-## Overview of the Apptainer Interface
+## Descripción general de la interfaz de Apptainer
 
-Apptainer commands can be executed natively on the master or any compute node, without the need to load any additional module
+Los comandos de Apptainer pueden ejecutarse de forma nativa en el nodo maestro o en cualquier nodo de cómputo, sin necesidad de cargar ningún módulo adicional.
 
-The `help` command gives an overview of Apptainer options and subcommands as follows:
+El comando `help` ofrece una descripción general de las opciones y subcomandos de Apptainer:
 
 ```bash
 $ apptainer help
@@ -76,32 +76,32 @@ For additional help or support, please visit https://apptainer.org/help/
 
 ```
 
-## Downloading Images
+## Descarga de imágenes
 
-- **Container Images** are executables that bundle together all necessary components for an application or an environment, like a template for containers.
-- **Containers** are the runtime instance of images.
+- Las **imágenes de contenedor** son ejecutables que agrupan todos los componentes necesarios para una aplicación o entorno, como una plantilla para los contenedores.
+- Los **contenedores** son la instancia en ejecución de las imágenes.
 
-Pre-built containers can be obtained from a variety of sources like:
+Los contenedores preconstruidos pueden obtenerse de diversas fuentes como:
 
 - Apptainer/Singularity Hub
 - [Docker Hub](https://hub.docker.com/)
 - [NVIDIA NGC Catalog](https://catalog.ngc.nvidia.com/containers)
-- Other OCI registries
+- Otros registros OCI
 
- You can use the [pull](https://apptainer.org/docs/user/main/cli/apptainer_pull.html#apptainer-pull) and [build](https://apptainer.org/docs/user/main/cli/apptainer_build.html#apptainer-build) commands to download images from an external resource like docker:
+Puedes usar los comandos [pull](https://apptainer.org/docs/user/main/cli/apptainer_pull.html#apptainer-pull) y [build](https://apptainer.org/docs/user/main/cli/apptainer_build.html#apptainer-build) para descargar imágenes de un recurso externo como Docker:
 
 ```bash
 (master)$ apptainer pull docker://alpine
 (master)$ apptainer build <container-name>.sif docker://alpine
 ```
 
-Remember!! <pull> and <build> commands should be executed on the master node. The master node is the only one with internet access.
+¡Recuerda! Los comandos `pull` y `build` deben ejecutarse en el nodo maestro. El nodo maestro es el único con acceso a internet.
 
-## Interacting with existing containers
+## Interacción con contenedores existentes
 
 ### Run
 
-Once the image is downloaded, you are ready to run it.  As an example, we will download the ***lolcow*** container and run it.
+Una vez descargada la imagen, estás listo para ejecutarla. Como ejemplo, descargaremos el contenedor ***lolcow*** y lo ejecutaremos.
 
 ```bash
 # Container downloading
@@ -130,18 +130,18 @@ INFO:    Creating SIF file...
 
 ```
 
-As we can see the container was download as an Apptainer Image File `lolcow_latest.sif` . This file was executed with the command `apptainer run <container-image-name>.sif`  . However, `run` is not the only command to run and interact with container, we will discuss this in the next lines. 
+Como podemos ver, el contenedor fue descargado como un archivo de imagen de Apptainer `lolcow_latest.sif`. Este archivo fue ejecutado con el comando `apptainer run <container-image-name>.sif`. Sin embargo, `run` no es el único comando para ejecutar e interactuar con un contenedor; lo discutiremos en las siguientes líneas.
 
 ### Shell
 
-You can create a new shell within your container and interact with it as though it were a virtual machine.
+Puedes crear un nuevo shell dentro de tu contenedor e interactuar con él como si fuera una máquina virtual.
 
 ```bash
 (master)$ apptainer shell lolcow_latest.sif   
 Apptainer>
 ```
 
-The change in prompt ( from `(master)$` to `Apptainer>`) indicates you are now inside the container. Additionally, your are the same user as you are in the host system and you can have access to the user home directory.
+El cambio en el prompt (de `(master)$` a `Apptainer>`) indica que ahora estás dentro del contenedor. Además, eres el mismo usuario que en el sistema anfitrión y tienes acceso al directorio home del usuario.
 
 ```bash
 # I executing apptainer in the master node
@@ -157,9 +157,9 @@ Apptainer> pwd
 /home/aturing
 ```
 
-Note: You can execute apptainer shell in the master node, but is highly recommended to do so using an interactive slurm job.  To do so, you must add the following command before your apptainer commands `srun --pty --mem=2G -p debug <apptainer command>`. 
+Nota: Puedes ejecutar `apptainer shell` en el nodo maestro, pero se recomienda hacerlo usando un trabajo interactivo de Slurm. Para ello, debes agregar el siguiente comando antes de tus comandos de Apptainer: `srun --pty --mem=2G -p debug <apptainer command>`.
 
-Here is the above example using and interactive slurm job.
+A continuación se muestra el ejemplo anterior usando un trabajo interactivo de Slurm:
 
 ```bash
 # I will execute an apptainer shell in a compute node
@@ -168,11 +168,11 @@ Apptainer> hostname
 n003
 ```
 
-Remember that jobs in the `debug` partition has a time limit of 30 minutes. For long time running jobs, you must execute it using an slurm batch job. We will explain this later. 
+Recuerda que los trabajos en la partición `debug` tienen un límite de tiempo de 30 minutos. Para trabajos de larga duración, debes ejecutarlos usando un trabajo batch de Slurm. Explicaremos esto más adelante.
 
 ### Exec
 
-With `exec`command you can execute a custom command within a container. For example, to execute the `cowsay`program within the `lolcow_latest.sif` container:
+Con el comando `exec` puedes ejecutar un comando personalizado dentro de un contenedor. Por ejemplo, para ejecutar el programa `cowsay` dentro del contenedor `lolcow_latest.sif`:
 
 ```bash
 [rubaldo@khipu ~]$ apptainer exec lolcow_latest.sif cowsay Khipu
@@ -186,9 +186,9 @@ With `exec`command you can execute a custom command within a container. For exam
                 ||     ||
 ```
 
-## Working with files
+## Trabajo con archivos
 
-Files on the system host are accesible from within the container.  
+Los archivos del sistema anfitrión son accesibles desde dentro del contenedor.
 
 ```bash
 [rubaldo@khipu ~]$ echo "Hello from Khipu" > $HOME/testfile.txt
@@ -196,19 +196,19 @@ Files on the system host are accesible from within the container.
 Hello from Khipu
 ```
 
-By default, Apptainer bind mounts `$HOME`, the current working directory, and additional system locations from the host into the container.
+Por defecto, Apptainer monta `$HOME`, el directorio de trabajo actual y ubicaciones adicionales del sistema anfitrión dentro del contenedor.
 
-References:
+Referencias:
 
 - [https://apptainer.org/docs/user/main/quick_start.html](https://apptainer.org/docs/user/main/quick_start.html)
 
-## Building custom images
+## Construcción de imágenes personalizadas
 
-Apptainer allows users to build containers from a definition file (like Docker does with a dockerfile in ). Within this file you can add environment variables or install software dependencies to easily reproduce and share your containers.
+Apptainer permite a los usuarios construir contenedores a partir de un archivo de definición (como Docker con un Dockerfile). Dentro de este archivo puedes agregar variables de entorno o instalar dependencias de software para reproducir y compartir fácilmente tus contenedores.
 
-A definition file has a header and a body. The header determines the base container to begin with, and the body is further divided into sections that perform tasks such as software installation, environment setup, and copying files into the container from host system.  Further information of how to create the apptainer definition file can be found [here](https://apptainer.org/docs/user/main/definition_files.html).
+Un archivo de definición tiene una cabecera y un cuerpo. La cabecera determina el contenedor base con el que comenzar, y el cuerpo se divide en secciones que realizan tareas como la instalación de software, la configuración del entorno y la copia de archivos al contenedor desde el sistema anfitrión. Más información sobre cómo crear el archivo de definición de Apptainer se puede encontrar [aquí](https://apptainer.org/docs/user/main/definition_files.html).
 
-For example, we will create a `lolcow.def` file to define a container based on **ubuntu** and then install **cowsay** within. 
+Por ejemplo, crearemos un archivo `lolcow.def` para definir un contenedor basado en **ubuntu** e instalar **cowsay** dentro de él.
 
 ```bash
 BootStrap: docker
@@ -231,9 +231,9 @@ From: ubuntu:24.04
 
 ```
 
-In this example the header tells Apptainer to start with a `ubuntu:24.04` base image from Docker Container Library. The `%post` section is executed in build time after the base image has been downloaded. In this example, we are using it to update the package library and install `cowsay` and `lolcat`.  The `%environment` section defines environment variables  for the container. The `%runscript` section is used to place actions for the container when it is executed (This commands will not be executed at build time). Finally, the `%label` section is used to place information about the container like the author, how to used it, examples, etc. 
+En este ejemplo, la cabecera le indica a Apptainer que comience con la imagen base `ubuntu:24.04` de la biblioteca de contenedores de Docker. La sección `%post` se ejecuta en tiempo de construcción después de que la imagen base ha sido descargada. En este ejemplo, la usamos para actualizar la biblioteca de paquetes e instalar `cowsay` y `lolcat`. La sección `%environment` define variables de entorno para el contenedor. La sección `%runscript` se usa para definir las acciones del contenedor cuando es ejecutado (estos comandos no se ejecutan en tiempo de construcción). Finalmente, la sección `%labels` se usa para colocar información sobre el contenedor, como el autor, cómo usarlo, ejemplos, etc.
 
-To build the container from the above file we need to execute `apptainer build <container-name>.sif <container-definition-file>.def`
+Para construir el contenedor a partir del archivo anterior, necesitamos ejecutar `apptainer build <container-name>.sif <container-definition-file>.def`:
 
 ```bash
 [rubaldo@khipu apptainer]$ apptainer build lolcow.sif lolcow.def 
@@ -247,15 +247,15 @@ INFO:    Build complete: lolcow.sif
 
 ```
 
-Then, to run the container is enough to execute `apptainer run lolcow.sif` or `./lolcow.sif`.
+Luego, para ejecutar el contenedor basta con ejecutar `apptainer run lolcow.sif` o `./lolcow.sif`.
 
-## GPU support
+## Soporte para GPU
 
-Apptainer has support for containers that use NVIDIA’s CUDA GPU computing framework. The following lines show how to create and run GPU containers in Khipu.
+Apptainer tiene soporte para contenedores que usan el framework de computación GPU CUDA de NVIDIA. Las siguientes líneas muestran cómo crear y ejecutar contenedores con GPU en Khipu.
 
-### Download images
+### Descarga de imágenes
 
-The first step as [shown before](https://google.com) is to pull and build the container image. As an example we will `pull` a nvida-cuda12.8.0 image.
+El primer paso, como se [mostró anteriormente](https://google.com), es descargar y construir la imagen del contenedor. Como ejemplo, descargaremos una imagen nvidia-cuda12.8.0.
 
 ```bash
 [rubaldo@khipu]$ apptainer pull docker://nvidia/cuda:12.8.0-base-ubuntu20.04
@@ -268,11 +268,11 @@ INFO:    Creating SIF file...
 [rubaldo@khipu]$ apptainer build cuda12.sif docker://nvidia/cuda:12.8.0-base-ubuntu20.04
 ```
 
-Remember: the `apptainer pull <something>` command only works on the master node. 
+Recuerda: el comando `apptainer pull <something>` solo funciona en el nodo maestro.
 
-GPU nodes in Khipu are accesible through Slurm. In the following lines I will show how to compile and run your cuda code using Apptainer and Slurm.
+Los nodos GPU en Khipu son accesibles a través de Slurm. En las siguientes líneas mostraré cómo compilar y ejecutar tu código CUDA usando Apptainer y Slurm.
 
-- As a sample, use the [gpu-info.cu](http://gpu-info.cu) code and compile it in the master node:
+- Como ejemplo, usa el código [gpu-info.cu](http://gpu-info.cu) y compílalo en el nodo maestro:
 
 ```bash
 # Load cuda module
@@ -280,7 +280,7 @@ GPU nodes in Khipu are accesible through Slurm. In the following lines I will sh
 [rubaldo@khipu]$ nvcc -o gpu_info gpu_info.cu
 ```
 
-- Then, to execute the code just run:
+- Luego, para ejecutar el código:
 
 ```bash
 [rubaldo@khipu]$ srun --mem=1G -p gpu apptainer exec --nv cuda_12.8.0-base-ubuntu20.04.sif ./gpu_info
@@ -303,11 +303,11 @@ Multiprocessor Count: 40
 
 ```
 
-As you can see the `--nv` is passed to the `exec` command to setup the environment to use an NVIDIA GPU and basic CUDA libraries. Without this flag the cuda devices  and libraries can not be used. This flag is not required at build time. 
+Como puedes ver, `--nv` se pasa al comando `exec` para configurar el entorno y usar una GPU NVIDIA con las bibliotecas básicas de CUDA. Sin este flag, los dispositivos y bibliotecas CUDA no pueden ser utilizados. Este flag no es necesario en tiempo de construcción.
 
-- Is highly recommended to compile your cuda code in the master node, because cuda images with nvidia compiler within (`devel` images) are much bigger than `base` container images.
+- Se recomienda ampliamente compilar el código CUDA en el nodo maestro, ya que las imágenes CUDA con el compilador de NVIDIA incluido (imágenes `devel`) son mucho más grandes que las imágenes `base`.
 
-As a prove of concept, we can compile the same code using Apptainer. In order to do so we need to pull a `devel` cuda image like **nvidia/cuda:12.5.1-devel-ubuntu20.04** (3.6 GB) which is more than 30 times bigger than a `base` image (~95 MB).
+Como prueba de concepto, podemos compilar el mismo código usando Apptainer. Para ello necesitamos descargar una imagen CUDA de tipo `devel`, como **nvidia/cuda:12.5.1-devel-ubuntu20.04** (3.6 GB), que es más de 30 veces más grande que una imagen `base` (~95 MB).
 
 ```bash
 [rubaldo@khipu]$ apptainer pull docker://nvidia/cuda:12.5.1-devel-ubuntu20.04
@@ -317,13 +317,13 @@ INFO:    Starting build...
 INFO:    Creating SIF file...
 ```
 
-Then to compile the code, run:
+Para compilar el código, ejecuta:
 
 ```bash
 [rubaldo@khipu]$ srun --mem=1G -p gpu apptainer exec --nv cuda_12.5.1-devel-ubuntu20.04.sif nvcc -o gpu_info gpu_info.cu
 ```
 
-And finally to execute the code:
+Y finalmente para ejecutar el código:
 
 ```bash
 [rubaldo@khipu]$ srun --mem=1G -p gpu apptainer exec --nv cuda_12.5.1-devel-ubuntu20.04.sif ./gpu_info
@@ -346,15 +346,15 @@ Multiprocessor Count: 40
 
 ```
 
-To practice the above commands you can try to execute it all our gpu nodes adding the `--nodelist=<name of a gpu node>` to the srun command. To check the list of gpu nodes execute `sinfo`.
+Para practicar los comandos anteriores, puedes intentar ejecutarlos en todos nuestros nodos GPU agregando `--nodelist=<nombre del nodo gpu>` al comando `srun`. Para ver la lista de nodos GPU, ejecuta `sinfo`.
 
-In all the previuos examples the `srun` commands was used to launch the slurm jobs. This command is suitable for short time jobs, but if your job requires much more time you should launch your jobs in batch mode with `sbatch`.
+En todos los ejemplos anteriores se usó el comando `srun` para lanzar los trabajos de Slurm. Este comando es adecuado para trabajos de corta duración, pero si tu trabajo requiere mucho más tiempo, debes lanzarlo en modo batch con `sbatch`.
 
-More information about Apptainer GPU support can be found [here](https://apptainer.org/docs/user/latest/gpu.html).
+Más información sobre el soporte GPU de Apptainer se puede encontrar [aquí](https://apptainer.org/docs/user/latest/gpu.html).
 
-## Interactive mode
+## Modo interactivo
 
-Sometimes you want to interact with your container like if you were on a shell. You can do this using an interactive slurm job. Interactive jobs should be executed on the `debug-gpu` partition and has a time limit of 30 minutes. Remember that container in apptainer are inmutable after build.
+A veces quieres interactuar con tu contenedor como si estuvieras en un shell. Puedes hacerlo usando un trabajo interactivo de Slurm. Los trabajos interactivos deben ejecutarse en la partición `debug-gpu` y tienen un límite de tiempo de 30 minutos. Recuerda que los contenedores en Apptainer son inmutables después de la construcción.
 
 ```bash
 [rubaldo@khipu]$ srun --pty -p debug-gpu apptainer run --nv cuda_12.8.0-base-ubuntu20.04.sif
@@ -383,9 +383,9 @@ Sun Mar  2 09:20:22 2025
 
 ```
 
-## Apptainer Cache
+## Caché de Apptainer
 
-When you generate a SIF image from remote sources, Apptainer will cache the image. By default, the cache folder will be created in `HOME` environmental variable (`$HOME/.apptainer/cache`). The `apptainer cache` command allows you to list and clean up your cache.
+Cuando generas una imagen SIF desde fuentes remotas, Apptainer almacena la imagen en caché. Por defecto, la carpeta de caché se crea en la variable de entorno `HOME` (`$HOME/.apptainer/cache`). El comando `apptainer cache` te permite listar y limpiar tu caché.
 
 ```bash
 # List your cache
@@ -411,11 +411,11 @@ apptainer cache clean --days 15
 
 ```
 
-Try to regularly free up your apptainer cache.
+Intenta liberar tu caché de Apptainer regularmente.
 
-## **SLURM Submission Script**
+## **Script de envío a SLURM**
 
-You can launch your Apptainer jobs in batch mode with an slurm script. It is highly recommended when your job will take a lot of time executing. As an example, the `lolcow_latest.sif`, container of the first example, will be run using a `lolcow.slurm` submission file.
+Puedes lanzar tus trabajos de Apptainer en modo batch con un script de Slurm. Se recomienda ampliamente cuando tu trabajo tomará mucho tiempo de ejecución. Como ejemplo, el contenedor `lolcow_latest.sif` del primer ejemplo se ejecutará usando un archivo de envío `lolcow.slurm`.
 
 ```bash
 #!/bin/bash
@@ -437,9 +437,9 @@ cd $HOME
 srun apptainer run lolcow_latest.sif 
 ```
 
-In the above script, **`1 CPU`** with **`1GB RAM`** per CPU was requested in the `debug` partition for the task. This container will run only one (`--ntasks=1`), if you want to execute it more times try changing the value of `--ntasks=`, but remember that this only works when your commands is executed with the `srun` command.
+En el script anterior, se solicitó **`1 CPU`** con **`1GB de RAM`** por CPU en la partición `debug` para la tarea. Este contenedor se ejecutará una sola vez (`--ntasks=1`); si deseas ejecutarlo más veces, intenta cambiar el valor de `--ntasks=`, pero recuerda que esto solo funciona cuando el comando se ejecuta con `srun`.
 
-To submit this script, just run:
+Para enviar este script, simplemente ejecuta:
 
 ```bash
 [rubaldo@khipu]$ sbatch lolcow.slurm
@@ -456,7 +456,7 @@ To submit this script, just run:
 
 ```
 
-For NVIDIA GPU jobs, in this case using the `cuda_12.8.0-base-ubuntu20.04.sif` image, the Slurm script `gpu_info.slurm` should be:
+Para trabajos con GPU NVIDIA, en este caso usando la imagen `cuda_12.8.0-base-ubuntu20.04.sif`, el script de Slurm `gpu_info.slurm` debe ser:
 
 ```bash
 #!/bin/bash
@@ -479,7 +479,7 @@ cd $HOME/apptainer
 srun apptainer exec --nv cuda_12.8.0-base-ubuntu20.04.sif ./gpu_info
 ```
 
-Then, to submit this script, just run:
+Luego, para enviar este script:
 
 ```bash
 [rubaldo@khipu]$ sbatch gpu_info.slurm
@@ -504,7 +504,7 @@ Multiprocessor Count: 40
 
 ```
 
-If you want to get notified when your job fails or finish, don’t forget to add the following lines to you slurm script.
+Si deseas recibir una notificación cuando tu trabajo falle o finalice, no olvides agregar las siguientes líneas a tu script de Slurm:
 
 ```bash
 #SBATCH --mail-type=fail        # send email when job begins
@@ -512,6 +512,6 @@ If you want to get notified when your job fails or finish, don’t forget to add
 #SBATCH --mail-user=<your email>
 ```
 
-References:
+Referencias:
 
 [https://hpc.nmsu.edu/discovery/software/apptainer/using-containers/](https://hpc.nmsu.edu/discovery/software/apptainer/using-containers/)
