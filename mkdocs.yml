@@ -24,6 +24,7 @@ nav:
       - guia-de-usuario/enviar-jobs/index.md
       - Comandos Básicos: guia-de-usuario/enviar-jobs/comandos-basicos.md
       - Particiones: guia-de-usuario/enviar-jobs/particiones.md
+      - Nodos: guia-de-usuario/enviar-jobs/nodos.md
       - Opciones de Slurm: guia-de-usuario/enviar-jobs/opciones-de-slurm.md
       - Jobs interactivos: guia-de-usuario/enviar-jobs/jobs-interactivos.md
       - Monitoreo de jobs: guia-de-usuario/enviar-jobs/monitorear.md

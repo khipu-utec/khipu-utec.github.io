@@ -61,3 +61,5 @@ Es posible habilitar las notificaciones por correo electrónico cada vez que ocu
 | :------------------ | :----------------: | :---------------- |
 | `--mail-type` | Envía un mail cada vez que ocurra un determinado evento.  | `--mail-type=END,FAIL` |
 | `--mail-user`| Establece el mail al cual se enviarán las notificaciones. | `--mail-user=<mi-coreo-electronico>` |
+
+Para más información, revisar la [documentación oficial de `sbatch`](https://slurm.schedmd.com/sbatch.html)

@@ -58,7 +58,7 @@ Usados para procesamiento de jobs que requieren de CPU y RAM. Es gerenciado auto
         </tr>
         <tr>
             <td><b>Memoria</b></td>
-            <td>157 GB DRAM DDR4-1333 MHz </td>
+            <td>224 GB DRAM DDR4-1333 MHz </td>
         </tr>
          <tr>
             <td><b>Red</b></td>
@@ -86,7 +86,7 @@ Usados para procesamiento de jobs que requieren de CPU y RAM. Es gerenciado auto
         </tr>
         <tr>
             <td><b>Memoria</b></td>
-            <td>126 GB DRAM DDR4-1333 MHz </td>
+            <td>224 GB DRAM DDR4-1333 MHz </td>
         </tr>
          <tr>
             <td><b>Red</b></td>
@@ -106,7 +106,7 @@ Usados para procesamiento de jobs que requieren de CPU y RAM. Es gerenciado auto
     <tbody>
         <tr>
             <td><b>Nombre</b></td>
-            <td>n003</td>
+            <td>n005</td>
         </tr>
         <tr>
             <td><b>Procesador</b></td>
@@ -114,7 +114,7 @@ Usados para procesamiento de jobs que requieren de CPU y RAM. Es gerenciado auto
         </tr>
         <tr>
             <td><b>Memoria</b></td>
-            <td>94 GB DRAM DDR4-1333 MHz </td>
+            <td>224 GB DRAM DDR4-1333 MHz </td>
         </tr>
          <tr>
             <td><b>Red</b></td>
@@ -176,7 +176,7 @@ Usados para procesamiento de jobs que requieren de CPU, RAM y/o GPU. Es gerencia
         </tr>
         <tr>
             <td><b>Memoria</b></td>
-            <td> 157 GB DRAM DDR4-1333 MHz</td>
+            <td> 192 GB DRAM DDR4-1333 MHz</td>
         </tr>
          <tr>
             <td><b>Red</b></td>
@@ -287,6 +287,6 @@ Usados para procesamiento de jobs que requieren de CPU, RAM y/o GPU. Es gerencia
 
 - **Sistema Operativo:** Rocky Linux 8.10 (Green Obsidian)
 - **Message Passing Library:** MPICH
-- **Compiladores:** Intel, GCC
-- **Job Scheduler:** SLURM 
+- **Compiladores:** Intel, GCC, CUDA 12.8
+- **Job Scheduler:** SLURM 25.11
 - **Manejo de software:** Módulos de ambiente

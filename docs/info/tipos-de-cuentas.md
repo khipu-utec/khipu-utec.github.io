@@ -31,21 +31,21 @@ Permite el uso del cluster para todos aquellos miembros de UTEC y asociados que 
 #### Tesis
 
 - **Particiones disponibles**: debug, debug-gpu, standard, gpu, big-mem
-- **Cantidad máxima de recursos por usuario**: 32 cores, 96GB RAM y 40 shards GPU
+- **Cantidad máxima de recursos por usuario**: 32 cores, 98GB RAM y 40 shards GPU
 - **Tiempo máximo de ejecución por job (Walltime):** 24 horas
 
 
 #### Investigación Nivel I
 
 - **Particiones disponibles**: debug, debug-gpu, standard, gpu, big-mem
-- **Cantidad máxima de recursos por usuario**: 48 cores, 120GB RAM y 40 shards GPU
-- **Tiempo máximo de ejecución por job (Walltime):** 48 horas
+- **Cantidad máxima de recursos por usuario**: 48 cores, 120GB RAM y 1 GPU o 40 shards GPU
+- **Tiempo máximo de ejecución por job (Walltime):** 72 horas
 
 
 #### Investigación Nivel II
 
 - **Particiones disponibles**: debug, debug-gpu, standard, gpu, big-mem
-- **Cantidad máxima de recursos por usuario**: 96 cores, 162GB RAM y 80 shards GPU
+- **Cantidad máxima de recursos por usuario**: 96 cores, 162GB RAM y 2 GPU o 80 shards GPU
 - **Tiempo máximo de ejecución por job (Walltime):** 96 horas
 
 
