@@ -28,6 +28,7 @@ nav:
       - Opciones de Slurm: guia-de-usuario/enviar-jobs/opciones-de-slurm.md
       - Jobs interactivos: guia-de-usuario/enviar-jobs/jobs-interactivos.md
       - Monitoreo de jobs: guia-de-usuario/enviar-jobs/monitorear.md
+      - Carpeta /local: guia-de-usuario/enviar-jobs/local.md
     - Software:
       - guia-de-usuario/software/index.md
       - Uso de software: guia-de-usuario/software/uso.md
